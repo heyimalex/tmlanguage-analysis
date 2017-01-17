@@ -1,0 +1,111 @@
+{
+  "fileTypes": [
+    "fhtml"
+  ],
+  "foldingStartMarker": "(?x)\n\t\t(\n\t\t\\#(?:\n\t\t\t    (?:macro|if|foreach)\\b \\s* \\(\n\t\t\t|\\{ (?:macro|if|foreach)\\b \\s* \\(\n\t\t).*(?!\\#\\{?end).*$\n\t\t)\n\t\t| # Copied from HTML\n\t\t(<(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)\\b.*?>\n\t\t|<!--(?!.*--\\s*>)\n\t\t|^<!--\\ \\#tminclude\\ (?>.*?-->)$\n\t\t|<\\?(?:php)?.*\\b(if|for(each)?|while)\\b.+:\n\t\t|\\{\\{?(if|foreach|capture|literal|foreach|php|section|strip)\n\t\t|\\{\\s*($|\\?>\\s*$|//|/\\*(.*\\*/\\s*$|(?!.*?\\*/)))\n\t\t)",
+  "foldingStopMarker": "(?x)\n\t\t(\\#end\\b|\\#\\{end)\n\t\t\n\t\t\n\t\t| # Copied from HTML\n\t\t(</(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)>\n\t\t|^(?!.*?<!--).*?--\\s*>\n\t\t|^<!--\\ end\\ tminclude\\ -->$\n\t\t|<\\?(?:php)?.*\\bend(if|for(each)?|while)\\b\n\t\t|\\{\\{?/(if|foreach|capture|literal|foreach|php|section|strip)\n\t\t|^[^{]*\\}\n\t\t)",
+  "keyEquivalent": "^@V",
+  "name": "Velocity (HTML)",
+  "patterns": [
+    {
+      "include": "text.html.basic"
+    },
+    {
+      "include": "text.velocity"
+    },
+    {
+      "include": "#leading-space"
+    }
+  ],
+  "repository": {
+    "leading-space": {
+      "patterns": [
+        {
+          "begin": "^(?=(\\t|  ))",
+          "end": "(?=[^\\t\\s]|\\n)",
+          "name": "meta.leading-tabs",
+          "patterns": [
+            {
+              "captures": {
+                "1": {
+                  "name": "meta.odd-tab.group1.spaces"
+                },
+                "2": {
+                  "name": "meta.even-tab.group2.spaces"
+                },
+                "3": {
+                  "name": "meta.odd-tab.group3.spaces"
+                },
+                "4": {
+                  "name": "meta.even-tab.group4.spaces"
+                },
+                "5": {
+                  "name": "meta.odd-tab.group5.spaces"
+                },
+                "6": {
+                  "name": "meta.even-tab.group6.spaces"
+                },
+                "7": {
+                  "name": "meta.odd-tab.group7.spaces"
+                },
+                "8": {
+                  "name": "meta.even-tab.group8.spaces"
+                },
+                "9": {
+                  "name": "meta.odd-tab.group9.spaces"
+                },
+                "10": {
+                  "name": "meta.even-tab.group10.spaces"
+                },
+                "11": {
+                  "name": "meta.odd-tab.group11.spaces"
+                }
+              },
+              "match": "(  )(  )?(  )?(  )?(  )?(  )?(  )?(  )?(  )?(  )?(  )?"
+            },
+            {
+              "captures": {
+                "1": {
+                  "name": "meta.odd-tab.group1.tab"
+                },
+                "2": {
+                  "name": "meta.even-tab.group2.tab"
+                },
+                "3": {
+                  "name": "meta.odd-tab.group3.tab"
+                },
+                "4": {
+                  "name": "meta.even-tab.group4.tab"
+                },
+                "5": {
+                  "name": "meta.odd-tab.group5.tab"
+                },
+                "6": {
+                  "name": "meta.even-tab.group6.tab"
+                },
+                "7": {
+                  "name": "meta.odd-tab.group7.tab"
+                },
+                "8": {
+                  "name": "meta.even-tab.group8.tab"
+                },
+                "9": {
+                  "name": "meta.odd-tab.group9.tab"
+                },
+                "10": {
+                  "name": "meta.even-tab.group10.tab"
+                },
+                "11": {
+                  "name": "meta.odd-tab.group11.tab"
+                }
+              },
+              "match": "(\\t)(\\t)?(\\t)?(\\t)?(\\t)?(\\t)?(\\t)?(\\t)?(\\t)?(\\t)?(\\t)?"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scopeName": "text.html.velocity",
+  "uuid": "ECA114B6-F103-4D5B-BD0A-9CCD9F797018"
+}

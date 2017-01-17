@@ -1,0 +1,119 @@
+{
+  "fileTypes": [
+    "rnc"
+  ],
+  "keyEquivalent": "^~R",
+  "name": "RelaxNG Compact",
+  "patterns": [
+    {
+      "match": "\\bgrammar\\b",
+      "name": "keyword.other.grammar.rnc"
+    },
+    {
+      "match": "\\bstart\\b",
+      "name": "keyword.other.start.rnc"
+    },
+    {
+      "match": "\\b(text|empty|xsd\\:(int|integer|double|date(Time)?|time|string|decimal))\\b",
+      "name": "storage.type.rnc"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.other.attribute.rnc"
+        },
+        "2": {
+          "name": "entity.other.attribute-name.rnc"
+        }
+      },
+      "match": "\\b(attribute)\\s+([a-zA-Z][a-zA-Z_0-9]*)\\s*\\{",
+      "name": "meta.declaration.attribute.rnc"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.other.element.rnc"
+        },
+        "2": {
+          "name": "entity.name.type.element.rnc"
+        }
+      },
+      "match": "\\b(element)\\s+([a-zA-Z][a-zA-Z_0-9]*)\\s*\\{",
+      "name": "meta.declaration.element.rnc"
+    },
+    {
+      "begin": "(^[ \\t]+)?(?=#)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.comment.leading.rnc"
+        }
+      },
+      "end": "(?!\\G)",
+      "patterns": [
+        {
+          "begin": "#",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.rnc"
+            }
+          },
+          "end": "\\n",
+          "name": "comment.line.number-sign.rnc"
+        }
+      ]
+    },
+    {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.rnc"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.rnc"
+        }
+      },
+      "name": "string.quoted.double.rnc",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escape.rnc"
+        }
+      ]
+    },
+    {
+      "begin": "'",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.rnc"
+        }
+      },
+      "end": "'",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.rnc"
+        }
+      },
+      "name": "string.quoted.single.rnc",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escape.rnc"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "entity.name.section.grammar_production.rnc"
+        }
+      },
+      "match": "\\b([a-zA-Z][a-zA-Z_0-9]*)\\s*=",
+      "name": "meta.grammar_production.rnc"
+    }
+  ],
+  "scopeName": "source.rnc",
+  "uuid": "85F32571-780F-4AAC-BA70-C2229E0B1BDA"
+}

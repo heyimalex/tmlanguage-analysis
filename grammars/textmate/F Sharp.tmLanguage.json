@@ -1,0 +1,324 @@
+{
+  "fileTypes": [
+    "fs"
+  ],
+  "foldingStartMarker": "",
+  "foldingStopMarker": "",
+  "keyEquivalent": "^~F",
+  "name": "F Sharp",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#constants"
+    },
+    {
+      "include": "#structure"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#let"
+    },
+    {
+      "include": "#method_calls"
+    },
+    {
+      "include": "#modules"
+    },
+    {
+      "include": "#anonymous_functions"
+    },
+    {
+      "include": "#keywords"
+    }
+  ],
+  "repository": {
+    "anonymous_functions": {
+      "patterns": [
+        {
+          "begin": "\\b(fun)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.type.function.fsharp"
+            }
+          },
+          "end": "(->)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.separator.function-definition.fsharp"
+            }
+          },
+          "name": "meta.function.anonymous",
+          "patterns": [
+            {
+              "include": "#variables"
+            }
+          ]
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "begin": "\\(\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.begin.fsharp"
+            }
+          },
+          "end": "\\*\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.end.fsharp"
+            }
+          },
+          "name": "comment.block.fsharp",
+          "patterns": [
+            {
+              "include": "#comments"
+            }
+          ]
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "match": "\\(\\)",
+          "name": "constant.language.unit.fsharp"
+        },
+        {
+          "match": "\\b-?[0-9][0-9_]*((\\.([0-9][0-9_]*([eE][+-]??[0-9][0-9_]*)?)?)|([eE][+-]??[0-9][0-9_]*))",
+          "name": "constant.numeric.floating-point.fsharp"
+        },
+        {
+          "match": "\\b(-?((0(x|X)[0-9a-fA-F][0-9a-fA-F_]*)|(0(o|O)[0-7][0-7_]*)|(0(b|B)[01][01_]*)|([0-9][0-9_]*)))",
+          "name": "constant.numeric.integer.nativeint.fsharp"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(new|in)\\b",
+          "name": "keyword.other.fsharp"
+        }
+      ]
+    },
+    "let": {
+      "patterns": [
+        {
+          "begin": "\\b(let|and)(\\s+rec)?(\\s+[a-z]\\w*)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.binding.fsharp"
+            },
+            "2": {
+              "name": "keyword.other.function-recursive.fsharp"
+            },
+            "3": {
+              "name": "entity.name.type.binding.fsharp"
+            }
+          },
+          "end": "=",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.separator.function.type-constraint.fsharp"
+            }
+          },
+          "name": "meta.binding.fsharp",
+          "patterns": [
+            {
+              "include": "#variables"
+            }
+          ]
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "keyword.other.binding.fsharp"
+            },
+            "3": {
+              "name": "constant.language.unit.fsharp"
+            },
+            "4": {
+              "name": "constant.language.ignored.fsharp"
+            }
+          },
+          "match": "\\b(let)\\s+((\\(\\))|(_))\\s+=",
+          "name": "meta.expression.fsharp"
+        }
+      ]
+    },
+    "method_calls": {
+      "patterns": [
+        {
+          "applyEndPatternLast": 1,
+          "begin": "(?<!\\w)([a-z]\\w*)(\\.)",
+          "end": "(?=.)",
+          "name": "meta.method-call.fsharp",
+          "patterns": [
+            {
+              "captures": {
+                "1": {
+                  "name": "punctuation.separator.method-call.fsharp"
+                }
+              },
+              "match": "[A-Z]\\w*(\\.)",
+              "name": "meta.method.fsharp"
+            }
+          ]
+        }
+      ]
+    },
+    "modules": {
+      "patterns": [
+        {
+          "begin": "\\b(open)\\s+([A-Z][a-zA-Z0-9'_]*)(?=(\\.[A-Z][a-zA-Z0-9_]*)*)",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.fsharp"
+            },
+            "2": {
+              "name": "support.other.module.fsharp"
+            }
+          },
+          "end": "(\\s|$)",
+          "name": "meta.module.open.fsharp",
+          "patterns": [
+            {
+              "captures": {
+                "1": {
+                  "name": "punctuation.separator.module-reference.fsharp"
+                },
+                "2": {
+                  "name": "support.other.module.fsharp"
+                }
+              },
+              "match": "(\\.)([A-Z][a-zA-Z0-9'_]*)",
+              "name": "support.other.module.fsharp"
+            }
+          ]
+        },
+        {
+          "begin": "^\\s*(module)\\s+([A-Z][a-zA-Z0-9'_]*)\\s*(=)\\s*([A-Z][a-zA-Z0-9'_]*)",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.module-definition.fsharp"
+            },
+            "2": {
+              "name": "entity.name.type.module.fsharp"
+            },
+            "3": {
+              "name": "punctuation.separator.module-definition.fsharp"
+            },
+            "4": {
+              "name": "support.other.module.fsharp"
+            }
+          },
+          "end": "(\\s|$)",
+          "name": "meta.module.alias.fsharp",
+          "patterns": [
+            {
+              "captures": {
+                "1": {
+                  "name": "punctuation.separator.module-reference.fsharp"
+                },
+                "2": {
+                  "name": "support.other.module.fsharp"
+                }
+              },
+              "match": "(\\.)([A-Z][a-zA-Z0-9'_]*)",
+              "name": "support.other.module.fsharp"
+            }
+          ]
+        },
+        {
+          "applyEndPatternLast": 1,
+          "begin": "(?<!\\w)([A-Z][a-zA-Z0-9_]*)(\\.)",
+          "beginCaptures": {
+            "1": {
+              "name": "support.other.module.fsharp"
+            },
+            "2": {
+              "name": "punctuation.separator.module-reference.fsharp"
+            }
+          },
+          "end": "(?=.)",
+          "name": "meta.module.reference.fsharp",
+          "patterns": [
+            {
+              "captures": {
+                "1": {
+                  "name": "punctuation.separator.module-reference.fsharp"
+                }
+              },
+              "match": "[A-Z][a-zA-Z0-9_]+(\\.)",
+              "name": "support.other.module.fsharp"
+            }
+          ]
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "begin": "(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.begin.fsharp"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end.fsharp"
+            }
+          },
+          "name": "string.quoted.double.fsharp",
+          "patterns": [
+            {
+              "match": "\\\\([\\\\'ntbr]|u[a-fA-F0-9]{4}|u[a-fA-F0-9]{8})",
+              "name": "constant.character.string.escape.fsharp"
+            },
+            {
+              "match": "\\\\(?![\\\\'ntbr]|u[a-fA-F0-9]{4}|u[a-fA-F0-9]{8}).",
+              "name": "invalid.illegal.character.string.fsharp"
+            }
+          ]
+        }
+      ]
+    },
+    "structure": {
+      "patterns": [
+        {
+          "begin": "\\(",
+          "end": "\\)",
+          "name": "meta.paren-group.fsharp",
+          "patterns": [
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "match": "\\(\\)",
+          "name": "variable.parameter.unit.fsharp"
+        },
+        {
+          "match": "[a-z]\\w*",
+          "name": "variable.parameter.fsharp"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.fsharp",
+  "uuid": "6BEEF5E4-D367-49CF-8887-A08B7FA2C3FB"
+}

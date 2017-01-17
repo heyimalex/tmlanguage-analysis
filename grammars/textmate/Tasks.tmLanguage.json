@@ -1,0 +1,79 @@
+{
+  "comment": "TODO: Folding?",
+  "fileTypes": [
+    "todo",
+    "tasks",
+    "todolist"
+  ],
+  "keyEquivalent": "^~T",
+  "name": "Tasks",
+  "patterns": [
+    {
+      "include": "#link"
+    },
+    {
+      "begin": "^(\\s*)(✓)",
+      "captures": {
+        "1": {
+          "name": "punctuation.whitespace.list_item.leading.tasks"
+        },
+        "2": {
+          "name": "punctuation.definition.list_item.tasks"
+        }
+      },
+      "contentName": "meta.paragraph.list.tasks",
+      "end": "$\\n?",
+      "name": "markup.list.completed.tasks",
+      "patterns": [
+        {
+          "include": "#link"
+        }
+      ]
+    },
+    {
+      "begin": "^(\\s*)(-)",
+      "captures": {
+        "1": {
+          "name": "punctuation.whitespace.list_item.leading.tasks"
+        },
+        "2": {
+          "name": "punctuation.definition.list_item.tasks"
+        }
+      },
+      "contentName": "meta.paragraph.list.tasks",
+      "end": "$\\n?",
+      "name": "markup.list.pending.tasks",
+      "patterns": [
+        {
+          "include": "#link"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.whitespace.list_item.leading.tasks"
+        },
+        "2": {
+          "name": "meta.header.tasks"
+        },
+        "3": {
+          "name": "meta.toc-list.tasks"
+        },
+        "4": {
+          "name": "punctuation.definition.header.tasks"
+        }
+      },
+      "match": "^(\\s*)((.+)(:)\\s*$\\n?)",
+      "name": "meta.header-line.tasks"
+    }
+  ],
+  "repository": {
+    "link": {
+      "match": "(https?|ftp|mailto):\\S+?(?=[)>,.':;\"]*(\\s|$)|$)",
+      "name": "markup.underline.link.tasks"
+    }
+  },
+  "scopeName": "text.tasks",
+  "uuid": "CDF5D65E-F8C5-4FD5-8BC3-D4BE8FE2C1EA"
+}

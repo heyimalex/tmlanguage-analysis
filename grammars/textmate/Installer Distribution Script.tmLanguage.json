@@ -1,0 +1,182 @@
+{
+  "fileTypes": [
+    "dist"
+  ],
+  "keyEquivalent": "^~I",
+  "name": "Installer Distribution Script",
+  "patterns": [
+    {
+      "begin": "(^\\s*)?(?=<script>)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.embedded.leading.apple-dist"
+        }
+      },
+      "contentName": "meta.embedded.js.apple-dist",
+      "end": "(?<=</script>)(?!<script>)(\\s*$\\n?)?",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.embedded.trailing.apple-dist"
+        }
+      },
+      "patterns": [
+        {
+          "begin": "((<)(script)(>))",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.embedded.begin.apple-dist"
+            },
+            "1": {
+              "name": "meta.tag.content.embedded.begin.apple-dist"
+            },
+            "2": {
+              "name": "punctuation.definition.tag.xml"
+            },
+            "3": {
+              "name": "entity.name.tag.xml"
+            },
+            "4": {
+              "name": "punctuation.definition.tag.xml"
+            }
+          },
+          "contentName": "source.js",
+          "end": "(((</))(script)(>))",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.embedded.end.apple-dist"
+            },
+            "1": {
+              "name": "meta.tag.content.embedded.end.apple-dist"
+            },
+            "2": {
+              "name": "punctuation.definition.tag.xml"
+            },
+            "3": {
+              "name": "source.js"
+            },
+            "4": {
+              "name": "entity.name.tag.xml"
+            },
+            "5": {
+              "name": "punctuation.definition.tag.xml"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#javascript"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "include": "text.xml"
+    }
+  ],
+  "repository": {
+    "javascript": {
+      "patterns": [
+        {
+          "begin": "\\bsystem\\b",
+          "end": "(?=(\\(|\\s))|$",
+          "name": "support.class.apple-dist",
+          "patterns": [
+            {
+              "match": "\\b(compareVersions|defaults|gestalt|localizedString(WithFormat)?|localizedStandardString(WithFormat)?|log|propertiesOf|run(Once)?|sysctl|users\\.desktopSessionsCount|version)\\b",
+              "name": "support.function.apple-dist"
+            },
+            {
+              "begin": "\\b(applications)\\b",
+              "end": "(?=(\\(|\\s))|$",
+              "name": "support.function.apple-dist",
+              "patterns": [
+                {
+                  "match": "\\b(fromPID|fromIdentifier|all)\\b",
+                  "name": "support.variable.apple-dist"
+                }
+              ]
+            },
+            {
+              "begin": "\\b(files)\\b",
+              "end": "(?=(\\(|\\s))|$",
+              "name": "support.function.apple-dist",
+              "patterns": [
+                {
+                  "match": "\\b(fileExistsAtPath|plistAtPath|bundleAtPath)\\b",
+                  "name": "support.variable.apple-dist"
+                }
+              ]
+            },
+            {
+              "begin": "\\b(ioregistry)\\b",
+              "end": "(?=(\\(|\\s))|$",
+              "name": "support.function.apple-dist",
+              "patterns": [
+                {
+                  "match": "\\b(fromPath|matching(Class|Name)|(children|parents)Of)\\b",
+                  "name": "support.variable.apple-dist"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "begin": "\\b(choices)\\b",
+          "end": "(?=(\\(|\\s))|$",
+          "name": "support.class.apple-dist",
+          "patterns": [
+            {
+              "match": "\\b(.*)\\.(bundle|customLocation(AllowAlternateVolumes)?|description(-mime-type)?|(start_)?enabled|id|(start_)?selected|tooltip|(start_)?visible|title|packages|packageUpgradeAction)\\b",
+              "name": "support.variable.apple-dist"
+            }
+          ]
+        },
+        {
+          "begin": "\\bmy\\b",
+          "end": "(?=(\\(|\\s))|$",
+          "name": "support.class.apple-dist",
+          "patterns": [
+            {
+              "begin": "\\b(choice)\\b",
+              "end": "(?=(\\(|\\s))|$",
+              "name": "support.function.apple-dist",
+              "patterns": [
+                {
+                  "match": "\\b(bundle|customLocation(AllowAlternateVolumes)?|description(-mime-type)?|(start_)?enabled|id|(start_)?selected|tooltip|(start_)?visible|title|packages|packageUpgradeAction)\\b",
+                  "name": "support.variable.apple-dist"
+                }
+              ]
+            },
+            {
+              "begin": "\\b(result)\\b",
+              "end": "(?=(\\(|\\s))|$",
+              "name": "support.function.apple-dist",
+              "patterns": [
+                {
+                  "match": "\\b(type|title|message)\\b",
+                  "name": "support.variable.apple-dist"
+                }
+              ]
+            },
+            {
+              "begin": "\\b(target)\\b",
+              "end": "(?=(\\(|\\s))|$",
+              "name": "support.function.apple-dist",
+              "patterns": [
+                {
+                  "match": "\\b(mountpoint|availableKilobytes|systemVersion|receiptForIdentifier)\\b",
+                  "name": "support.variable.apple-dist"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "include": "source.js"
+        }
+      ]
+    }
+  },
+  "scopeName": "text.xml.apple-dist",
+  "uuid": "25D29CD3-07B7-44C6-A96A-46CF771130EB"
+}

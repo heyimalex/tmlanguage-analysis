@@ -1,0 +1,41 @@
+{
+  "fileTypes": [
+    "spec",
+    "client"
+  ],
+  "firstLineMatch": "# A Perforce",
+  "name": "Perforce Client Specification",
+  "patterns": [
+    {
+      "match": "^(Change|Client|User|Status|Description|Files|Update|Access|Owner|Host|Root|AltRoots|Options|SubmitOptions|LineEnd|View):",
+      "name": "keyword.other"
+    },
+    {
+      "match": "\\b((submit|revert|leave)unchanged)(\\+reopen)?\\b",
+      "name": "keyword.control.submitoptions"
+    },
+    {
+      "match": "\\b(local|unix||mac|win|share)\\b",
+      "name": "keyword.control.lineend"
+    },
+    {
+      "match": "\\b(((no)?(allwrite|clobber|compress|modtime|rmdir)|(un)?locked))\\b",
+      "name": "keyword.control.options"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.comment"
+        }
+      },
+      "match": "(#).*$\\n?",
+      "name": "comment.line"
+    },
+    {
+      "match": "<enter description here>",
+      "name": "invalid.illegal"
+    }
+  ],
+  "scopeName": "source.perforce",
+  "uuid": "9C843973-4684-4D1F-AC63-748BE92025A6"
+}

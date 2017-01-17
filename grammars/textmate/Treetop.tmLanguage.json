@@ -1,0 +1,162 @@
+{
+  "fileTypes": [
+    "treetop",
+    "tt"
+  ],
+  "keyEquivalent": "^~T",
+  "name": "Treetop",
+  "patterns": [
+    {
+      "captures": {
+        "1": {
+          "name": "storage.type.grammar.treetop"
+        },
+        "2": {
+          "name": "entity.name.type.grammar.treetop"
+        }
+      },
+      "match": "^\\s*(grammar)\\s+([A-Za-z]\\w*)",
+      "name": "meta.grammar.treetop"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "storage.type.rule.treetop"
+        },
+        "2": {
+          "name": "entity.name.function.treetop"
+        }
+      },
+      "match": "(?=rule\\b)(?<=^|\\s)(rule)\\b\\s+([a-zA-Z]\\w+)",
+      "name": "meta.function.rule.treetop"
+    },
+    {
+      "match": "\\bend\\b",
+      "name": "keyword.control.end.treetop"
+    },
+    {
+      "match": "/",
+      "name": "keyword.operator.function-call.ordered-choice.treetop"
+    },
+    {
+      "match": "[a-zA-Z]\\w*",
+      "name": "variable.other.non-terminal.treetop"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.string.begin.treetop"
+        },
+        "3": {
+          "name": "punctuation.definition.string.end.treetop"
+        }
+      },
+      "match": "(\")(\\\\.|[^\"])*+(\")",
+      "name": "string.quoted.double.treetop"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.string.begin.treetop"
+        },
+        "3": {
+          "name": "punctuation.definition.string.end.treetop"
+        }
+      },
+      "match": "(')(\\\\.|[^'])*+(')",
+      "name": "string.quoted.single.treetop"
+    },
+    {
+      "match": "\\[(\\\\.|[^\\]])*+\\]",
+      "name": "string.regexp.treetop"
+    },
+    {
+      "begin": "(^[ \\t]+)?(?=#)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.comment.leading.treetop"
+        }
+      },
+      "end": "(?!\\G)",
+      "patterns": [
+        {
+          "begin": "#",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.treetop"
+            }
+          },
+          "end": "\\n",
+          "name": "comment.line.number-sign.treetop"
+        }
+      ]
+    },
+    {
+      "match": "(?<=\\S)[*?+]",
+      "name": "keyword.operator.quantifier.treetop"
+    },
+    {
+      "match": "[!&](?=\\S)",
+      "name": "keyword.operator.predicate.treetop"
+    },
+    {
+      "match": "[()]",
+      "name": "punctuation.definition.grouping.treetop"
+    },
+    {
+      "match": "\\.",
+      "name": "constant.character.any-char.any-char.treetop"
+    },
+    {
+      "match": "(?<=\\s|^)[*?+]|[!&](?=\\s|$)",
+      "name": "invalid.illegal.floating-punctuation.treetop"
+    },
+    {
+      "begin": "\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.section.embedded.begin.ruby"
+        }
+      },
+      "comment": "ruby code inline",
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.embedded.end.ruby"
+        }
+      },
+      "name": "source.ruby",
+      "patterns": [
+        {
+          "include": "#nest_curly"
+        },
+        {
+          "include": "source.ruby"
+        }
+      ]
+    }
+  ],
+  "repository": {
+    "nest_curly": {
+      "begin": "\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.section.scope.begin.ruby"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.scope.end.ruby"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#nest_curly"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.treetop",
+  "uuid": "4C3F0BD9-0F5A-4EB9-962C-1F8C78F039FE"
+}

@@ -1,0 +1,15 @@
+{
+  "fileTypes": [],
+  "foldingStartMarker": "",
+  "foldingStopMarker": "",
+  "keyEquivalent": "^~U",
+  "name": "Unicode Highlight No ASCII",
+  "patterns": [
+    {
+      "match": "[\\x{80}-\\x{10FFFF}]+",
+      "name": "invalid"
+    }
+  ],
+  "scopeName": "unicode.check.noASCII",
+  "uuid": "4C8FA2CF-79EA-4C56-B3F8-2036E6BFFF94"
+}

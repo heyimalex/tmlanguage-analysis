@@ -1,0 +1,15 @@
+{
+  "fileTypes": [],
+  "foldingStartMarker": "",
+  "foldingStopMarker": "",
+  "keyEquivalent": "^~U",
+  "name": "Unicode Highlight Combining Marks",
+  "patterns": [
+    {
+      "match": "[\\x{0300}-\\x{036F}\\x{1DC0}-\\x{1DFF}\\x{20D0}-\\x{20FF}\\x{FE20}-\\x{FE2F}]+",
+      "name": "invalid"
+    }
+  ],
+  "scopeName": "unicode.check.combiningMarks",
+  "uuid": "B48EDCF6-3E73-4115-A0C9-10B17778F8F5"
+}

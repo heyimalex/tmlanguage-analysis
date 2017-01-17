@@ -1,0 +1,342 @@
+{
+  "fileTypes": [],
+  "name": "TextMate Scopes",
+  "patterns": [
+    {
+      "include": "#scope_language"
+    },
+    {
+      "include": "#scope_root"
+    },
+    {
+      "include": "#scope_attr"
+    },
+    {
+      "include": "#scope_dyn"
+    }
+  ],
+  "repository": {
+    "scope": {
+      "patterns": [
+        {
+          "include": "#scope_language"
+        },
+        {
+          "include": "#scope_root"
+        },
+        {
+          "include": "#scope_attr"
+        },
+        {
+          "include": "#scope_dyn"
+        }
+      ]
+    },
+    "scope_attr": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Attr",
+          "match": "(?x)\n\t\t\t\t\t\t\\G attr\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:file|os-version|project|rev-path|scm|untitled)\n\t\t\t\t\t\t\t(?:\n\t\t\t\t\t\t\t\t(?:\n\t\t\t\t\t\t\t\t\t(?<=\\.file) \\. (?:unknown-type|unknown-encoding)\n\t\t\t\t\t\t\t\t  | (?<!\\.file)\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t\t)?\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        }
+      ]
+    },
+    "scope_dyn": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Dyn",
+          "match": "(?x)\n\t\t\t\t\t\t\\G dyn\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:modifier|caret|misspelled|selection)\n\t\t\t\t\t\t\t(?:\n\t\t\t\t\t\t\t\t(?:\n\t\t\t\t\t\t\t\t\t(?<=\\.modifier) \\. (?:command|control|option|shift)\n\t\t\t\t\t\t\t\t  | (?<!\\.modifier)\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t\t)?\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        }
+      ]
+    },
+    "scope_language": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Comment",
+          "match": "(?x)\n\t\t\t\t\t\t\\G comment\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:line|block)\n\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Constant",
+          "match": "(?x)\n\t\t\t\t\t\t\\G constant\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:numeric|character|escape|language|other)\n\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Entity",
+          "match": "(?x)\n\t\t\t\t\t\t\\G entity\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:name|other)\n\t\t\t\t\t\t\t(?:\n\t\t\t\t\t\t\t\t(?:\n\t\t\t\t\t\t\t\t\t(?<=\\.name)  \\. (?:function|type|tag|section)\n\t\t\t\t\t\t\t\t  | (?<=\\.other) \\. (?:inherited-class|attribute-name)\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t\t)?\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Invalid",
+          "match": "(?x)\n\t\t\t\t\t\t\\G invalid\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:illegal|deprecated)\n\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Keyword",
+          "match": "(?x)\n\t\t\t\t\t\t\\G keyword\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:control|operator|other)\n\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Markup",
+          "match": "(?x)\n\t\t\t\t\t\t\\G markup\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:underline|bold|heading|italic|list|quote|raw|other)\n\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Meta",
+          "match": "(?x)\n\t\t\t\t\t\t\\G meta\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Punctuation",
+          "match": "(?x)\n\t\t\t\t\t\t\\G punctuation\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:definition|section|separator|terminator|whitespace)\n\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Storage",
+          "match": "(?x)\n\t\t\t\t\t\t\\G storage\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:type|modifier)\n\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "String",
+          "match": "(?x)\n\t\t\t\t\t\t\\G string\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:quoted|unquoted|interpolated|regexp|other)\n\t\t\t\t\t\t\t(?:\n\t\t\t\t\t\t\t\t(?:\n\t\t\t\t\t\t\t\t\t(?<=\\.quoted) \\. (?:single|double|triple|other)\n\t\t\t\t\t\t\t\t  | (?<!\\.quoted)\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t\t)?\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Support",
+          "match": "(?x)\n\t\t\t\t\t\t\\G support\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:function|class|type|constant|variable|other)\n\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Variable",
+          "match": "(?x)\n\t\t\t\t\t\t\\G variable\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\\.\n\t\t\t\t\t\t\t(?:parameter|language|other)\n\t\t\t\t\t\t\t(?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)*\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        }
+      ]
+    },
+    "scope_root": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Source",
+          "match": "(?x)\n\t\t\t\t\t\t\\G source\n\t\t\t\t\t\t( (?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)* )?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        },
+        {
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "punctuation.separator.tm-scope"
+                }
+              ]
+            },
+            "2": {
+              "name": "invalid.illegal.nonconforming-scope.tm-scope"
+            }
+          },
+          "comment": "Text",
+          "match": "(?x)\n\t\t\t\t\t\t\\G text\n\t\t\t\t\t\t( (?:\\.[^.\\s,()&|\\[\\]:\"'{}<>*?=^;#]+)* )?\n\t\t\t\t\t\t(.*)$\n\t\t\t\t\t",
+          "name": "constant.other.scope.tm-scope"
+        }
+      ]
+    }
+  },
+  "scopeName": "text.tm-scope",
+  "uuid": "B02BCBF9-28E1-4193-A894-AB567D28924C"
+}

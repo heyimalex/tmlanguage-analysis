@@ -1,0 +1,116 @@
+{
+  "fileTypes": [
+    "slax"
+  ],
+  "keyEquivalent": "^~S",
+  "name": "SLAX",
+  "patterns": [
+    {
+      "begin": "/\\*",
+      "captures": {
+        "0": {
+          "name": "punctuation.definition.comment.slax"
+        }
+      },
+      "end": "\\*/",
+      "name": "comment.block.slax"
+    },
+    {
+      "match": "(\\/[-a-zA-Z0-9_]+|[-a-zA-Z0-9_]+\\/[-a-zA-Z0-9_]+|\\/[-a-zA-Z0-9_]+\\/[-a-zA-Z0-9_]+)",
+      "name": "constant.other.namespace.slax"
+    },
+    {
+      "match": "\\b(apply-templates|call|else|for-each|if|match|mode|param|priority|template|var|version|with)\\b",
+      "name": "keyword.control.slax"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "storage.type.sub.slax"
+        },
+        "2": {
+          "name": "entity.name.function.slax"
+        },
+        "3": {
+          "name": "storage.type.method.slax"
+        }
+      },
+      "match": "^\\s*(call)\\s+([-a-zA-Z0-9_:]+)\\s*(\\([\\$\\@\\*;]*\\))?",
+      "name": "meta.call.slax"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "entity.name.function.slax"
+        },
+        "2": {
+          "name": "storage.type.method.slax"
+        }
+      },
+      "match": "^([-a-zA-Z0-9_]+)\\s*(\\([\\$;]*\\))?",
+      "name": "meta.method.slax"
+    },
+    {
+      "begin": "(<)([a-zA-Z0-9:]+)",
+      "end": "(>)",
+      "name": "meta.tag.slax"
+    },
+    {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.slax"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.slax"
+        }
+      },
+      "name": "string.quoted.double.slax",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escape.slax"
+        }
+      ]
+    },
+    {
+      "begin": "'",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.slax"
+        }
+      },
+      "end": "'",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.slax"
+        }
+      },
+      "name": "string.quoted.single.slax",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escape.slax"
+        }
+      ]
+    },
+    {
+      "match": "\\b(copy-of|expr|import|not|ns junos|ns xnm|ns jcs)\\b",
+      "name": "support.function.slax"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.variable.slax"
+        }
+      },
+      "match": "(\\$)([-a-zA-Z0-9_\\$])*\\b",
+      "name": "variable.other.readwrite.global.slax"
+    }
+  ],
+  "scopeName": "source.slax",
+  "uuid": "AAD4AAB9-384A-4DB4-A301-22E1D3747328"
+}

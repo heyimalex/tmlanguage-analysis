@@ -1,0 +1,116 @@
+{
+  "fileTypes": [
+    "mx",
+    "inp",
+    "mxo"
+  ],
+  "foldingStartMarker": "(?i)^[ \\t]*(Title +)?(G(roup)? *[0-9]|Begin|matrices)",
+  "foldingStopMarker": "(?i)^[ \\t]*(END|!end)",
+  "keyEquivalent": "^~M",
+  "name": "Mx",
+  "patterns": [
+    {
+      "comment": "everything after an “!” is comment",
+      "match": "!.*$",
+      "name": "comment.character.!.mx"
+    },
+    {
+      "comment": "Begin Matrices;... End Matrices;",
+      "match": "(?i)\\b(Begin|End) +(Matrices|Algebra) ?;",
+      "name": "keyword.control.semicolon.mx"
+    },
+    {
+      "comment": "line doesnt end with terminator",
+      "match": "(?i)\\b(Begin|End) +(Matrices|Algebra)[^;]?[!\\n]",
+      "name": "invalid.illegal.incomplete.mx"
+    },
+    {
+      "match": ";",
+      "name": "keyword.control.semicolon.mx"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.title.mx"
+        },
+        "3": {
+          "name": "variable.operator.mx"
+        },
+        "4": {
+          "name": "string.VARIABLE_NAMES.mx"
+        }
+      },
+      "comment": "Group2: blah blah;",
+      "match": "(?i)^[ \\t]*(G(roup)? *[0-9]+)(:)(.*)$",
+      "name": "meta.keyword.title.mx"
+    },
+    {
+      "match": "(?i)#(define|ng(roups)?)\\b",
+      "name": "keyword.control.mx"
+    },
+    {
+      "match": "\\b(?i)(Boundary|Calculation|CMatrix|Constraint|Covariance|Covariances|CTable|Data|Define|Definition[a-zA-Z_]*|Drop|Else|End|Endif|Fix(ed)?|Equate|Free|Unique|If|Intervals?|Labels?|Matrices|Matrix|Mean|Means|Missing|NGroups?|Options?|Ordinal|Rectangular|Select( if)?|Specify|ST(art)?|TO|GET|SAVE)\\b",
+      "name": "keyword.control.mx"
+    },
+    {
+      "comment": "flag 2-char abbreviations as bad practice",
+      "match": "\\b(?i)(BO|CA|CM|CO|CO|CT|DA|DE|DR|EL|FI|EQ|FR|IF|IN|LA|MA|MA|ME|MI|NG|OP|OR|RE|SE|SP|ST|TO)[a-zA-Z_]{1,1}\\b",
+      "name": "invalid.illegal.incomplete.keyword.mx"
+    },
+    {
+      "match": "\\b(?i)(Computed|Full|Lower|Sym(metric|.*)|Low|Iden(tity|.*)|Unit|Symm|IZ|UN|ID|FU|SY|SD|LO|DI|ZI|Zero|ZIden|IZero)\\b",
+      "name": "storage.control.mx"
+    },
+    {
+      "begin": "\"",
+      "end": "\"",
+      "name": "string.quoted.double.mx",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escape.untitled"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "variable.operator.mx"
+        },
+        "2": {
+          "name": "variable.operator.mx"
+        },
+        "3": {
+          "name": "variable.operator.mx"
+        },
+        "4": {
+          "name": "string.VARIABLE_NAMES.mx"
+        },
+        "5": {
+          "name": "variable.operator.mx"
+        }
+      },
+      "comment": "\\STND(A);",
+      "match": "(?i)(\\\\)(STND|abs|allint|aorder|chol|cos|cosh|cov|cprod|cumnor|d2v|det|dorder|eval|evec|exp|incrow|ival|ivec|ln|m2v|max|mean|min|mnor|momnor|part|pchi|pdfnor|prod|rprod|sin|sinh|sortc|sortr|sqrt|stnd|sum|tan|tanh|tr|v2d|vec|vech)(\\()([A-Z])(\\))",
+      "name": "meta.variable.operator.mx"
+    },
+    {
+      "match": "(\\=\\=|\\/\\=|\\>\\=|\\>|\\<|\\<\\=|\\%|\\=\\>|\\=|\\*|\\+|\\&|\\^|\\@|\\~|\\'|\\_|\\||\\:\\:|Row|Col(umn))",
+      "name": "variable.operator.mx"
+    },
+    {
+      "match": "\\b((0(x|X)[0-9a-fA-F]*)|([0-9\\.]*_[ri][0-9]+)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b",
+      "name": "constant.numeric.fortran"
+    },
+    {
+      "match": "([a-zA-Z][_a-zA-Z0-9\\.]*)",
+      "name": "string.VARIABLE_NAMES.mx"
+    },
+    {
+      "match": "([0-9]+)",
+      "name": "variable.number.mplus"
+    }
+  ],
+  "scopeName": "source.mx",
+  "uuid": "754E7AB4-1DA0-4D9A-91D8-CA787E8249C8"
+}

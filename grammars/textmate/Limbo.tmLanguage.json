@@ -1,0 +1,80 @@
+{
+  "fileTypes": [
+    "b"
+  ],
+  "keyEquivalent": "^~L",
+  "name": "Limbo",
+  "patterns": [
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.comment.limbo"
+        }
+      },
+      "match": "(#).*$\\n?",
+      "name": "comment.line.number-sign.limbo"
+    },
+    {
+      "match": "\\b(con|continue|cyclic|fn|hd|implement|import|include|len|load|module|of|or|pick|self|spawn|string|tagof|tl|to|type)\\b",
+      "name": "keyword.other.limbo"
+    },
+    {
+      "comment": "keywords that delimit flow blocks",
+      "match": "\\b(alt|break|case|else|do|for|if|return|while|with)\\b",
+      "name": "keyword.control.flow.limbo"
+    },
+    {
+      "match": "\\b(byte|int|big|real|string|array|list|chan|adt|ref)\\b",
+      "name": "storage.type.limbo"
+    },
+    {
+      "match": "\\b(nil|\\\\0)\\b",
+      "name": "constant.language.limbo"
+    },
+    {
+      "comment": "bitwise",
+      "match": "\\b(\\&|\\^|<<|>>|\\|)\\b",
+      "name": "keyword.operator.bitwise.limbo"
+    },
+    {
+      "comment": "logical",
+      "match": "\\b(\\&\\&|\\|\\|)\\b",
+      "name": "keyword.operator.logical.limbo"
+    },
+    {
+      "match": "<|>|<\\=|>\\=|\\=\\=|\\!\\=",
+      "name": "keyword.operator.comparison.limbo"
+    },
+    {
+      "match": "\\b(0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?\\b",
+      "name": "constant.numeric.limbo"
+    },
+    {
+      "match": "\\:\\=|\\=",
+      "name": "keyword.operator.assignment.limbo"
+    },
+    {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.limbo"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.limbo"
+        }
+      },
+      "name": "string.quoted.double.limbo",
+      "patterns": [
+        {
+          "match": "\\\\([abtnvfr0\\\\'\"]|\\\\u(([0-7]|([A..F]|[a..f])){4}))",
+          "name": "constant.character.escape.limbo"
+        }
+      ]
+    }
+  ],
+  "scopeName": "source.limbo",
+  "uuid": "9B92490C-5D4C-419A-91AC-58F677BAB929"
+}

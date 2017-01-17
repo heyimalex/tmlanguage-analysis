@@ -1,0 +1,583 @@
+{
+  "fileTypes": [
+    "wikidot"
+  ],
+  "firstLineMatch": "\\[\\!-- ?wikidot ?--\\]",
+  "keyEquivalent": "^~W",
+  "name": "Wikidot",
+  "patterns": [
+    {
+      "include": "#php"
+    },
+    {
+      "comment": " derived from html comment, using square brackets",
+      "match": "(\\[!--(.*)--\\])",
+      "name": "comment.line.documentation.wikidot"
+    },
+    {
+      "begin": "\\[!--",
+      "captures": {
+        "0": {
+          "name": "comment.block.documentation.wikidot"
+        }
+      },
+      "end": "--\\]",
+      "name": "comment.block.documentation.wikidot"
+    },
+    {
+      "begin": "(\\[\\[)(html)(\\]\\])",
+      "captures": {
+        "0": {
+          "name": "meta.tag.template.block.wikidot"
+        },
+        "1": {
+          "name": "punctuation.definition.tag.wikidot"
+        },
+        "2": {
+          "name": "entity.name.tag.wikidot"
+        },
+        "3": {
+          "name": "punctuation.definition.tag.wikidot"
+        }
+      },
+      "end": "(\\[\\[/)(html)(\\]\\])",
+      "patterns": [
+        {
+          "include": "text.html.basic"
+        }
+      ]
+    },
+    {
+      "begin": "(\\[\\[)(code)(\\]\\])",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.tag.wikidot"
+        },
+        "2": {
+          "name": "entity.name.tag.wikidot"
+        },
+        "3": {
+          "name": "punctuation.definition.tag.wikidot"
+        }
+      },
+      "end": "(\\[\\[/)(code)(\\]\\])",
+      "name": "source.r.embedded",
+      "patterns": [
+        {
+          "include": "source.r"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.heading.1.wikidot"
+        }
+      },
+      "match": "^\\s*(\\+{1}) (.*)$\\n?",
+      "name": "markup.heading.1.wikidot"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.heading.2.wikidot"
+        }
+      },
+      "match": "^\\s*(\\+{2}) (.*)$\\n?",
+      "name": "markup.heading.2.wikidot"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.heading.3.wikidot"
+        }
+      },
+      "match": "^\\s*(\\+{3}) (.*)$\\n?",
+      "name": "markup.heading.3.wikidot"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.heading.4.wikidot"
+        }
+      },
+      "match": "^\\s*(\\+{4}) (.*)$\\n?",
+      "name": "markup.heading.4.wikidot"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.heading.5.wikidot"
+        }
+      },
+      "match": "^\\s*(\\+{5}) (.*)$\\n?",
+      "name": "markup.heading.5.wikidot"
+    },
+    {
+      "match": "^\\s*-{4,}\\s*$\\n?",
+      "name": "meta.separator.wikidot"
+    },
+    {
+      "match": "\\\\\\\\\\s",
+      "name": "markup.other.paragraph.wikidot"
+    },
+    {
+      "begin": "\\*\\*",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.bold.wikidot"
+        }
+      },
+      "end": "\\*\\*",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.bold.wikidot"
+        }
+      },
+      "name": "markup.bold.wikidot",
+      "patterns": [
+        {
+          "include": "#inline"
+        }
+      ]
+    },
+    {
+      "begin": "^([\\t ]*\\*)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.list_item.wikidot"
+        }
+      },
+      "comment": "* list item",
+      "end": "$\\n?",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.list_item.wikidot"
+        }
+      },
+      "name": "markup.list.unnumbered.wikidot",
+      "patterns": [
+        {
+          "include": "#inline"
+        }
+      ]
+    },
+    {
+      "begin": "^([\\t ]*\\#)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.list_item.wikidot"
+        }
+      },
+      "comment": "# list item",
+      "end": "$\\n?",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.list_item.wikidot"
+        }
+      },
+      "name": "markup.list.numbered.wikidot",
+      "patterns": [
+        {
+          "include": "#inline"
+        }
+      ]
+    },
+    {
+      "comment": " || cell || cell ||",
+      "match": "\\|\\|~?",
+      "name": "markup.heading.table.wikidot"
+    },
+    {
+      "begin": "(\\<)(file|nowiki)(\\>)",
+      "captures": {
+        "0": {
+          "name": "meta.tag.template.wikidot"
+        },
+        "1": {
+          "name": "punctuation.definition.tag.wikidot"
+        },
+        "2": {
+          "name": "entity.name.tag.wikidot"
+        },
+        "3": {
+          "name": "punctuation.definition.tag.wikidot"
+        }
+      },
+      "end": "(<\\/)(\\2)(\\>)",
+      "name": "markup.raw.wikidot"
+    },
+    {
+      "begin": "(%%|\\'\\')",
+      "captures": {
+        "0": {
+          "name": "punctuation.definition.raw.wikidot"
+        }
+      },
+      "end": "\\1",
+      "name": "markup.raw.wikidot"
+    },
+    {
+      "match": "^((\\s\\s)|(\\t))[^\\*\\-#].*$\\n?",
+      "name": "markup.raw.wikidot"
+    },
+    {
+      "begin": "(\\<)(sub|sup|del)(\\>)",
+      "captures": {
+        "0": {
+          "name": "meta.tag.template.wikidot"
+        },
+        "1": {
+          "name": "punctuation.definition.tag.wikidot"
+        },
+        "2": {
+          "name": "entity.name.tag.wikidot"
+        },
+        "3": {
+          "name": "punctuation.definition.tag.wikidot"
+        }
+      },
+      "end": "(\\</)(\\2)(\\>)",
+      "name": "markup.other.wikidot",
+      "patterns": [
+        {
+          "include": "#inline"
+        }
+      ]
+    },
+    {
+      "begin": "(<)(code)(?:\\s+[^>]*)?(>)",
+      "captures": {
+        "0": {
+          "name": "meta.tag.template.code.wikidot"
+        },
+        "1": {
+          "name": "punctuation.definition.tag.wikidot"
+        },
+        "2": {
+          "name": "entity.name.tag.wikidot"
+        },
+        "3": {
+          "name": "punctuation.definition.tag.wikidot"
+        }
+      },
+      "end": "(</)(code)(>)",
+      "name": "markup.raw.wikidot"
+    },
+    {
+      "include": "#inline"
+    },
+    {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.wikidot"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.wikidot"
+        }
+      },
+      "name": "string.quoted.double.wikidot",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escape.wikidot"
+        }
+      ]
+    }
+  ],
+  "repository": {
+    "inline": {
+      "patterns": [
+        {
+          "begin": "\\*\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.bold.wikidot"
+            }
+          },
+          "end": "\\*\\*",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.bold.wikidot"
+            }
+          },
+          "name": "markup.bold.wikidot",
+          "patterns": [
+            {
+              "include": "#inline"
+            }
+          ]
+        },
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.italic.wikidot"
+            }
+          },
+          "end": "//",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.italic.wikidot"
+            }
+          },
+          "name": "markup.italic.wikidot",
+          "patterns": [
+            {
+              "include": "#inline"
+            }
+          ]
+        },
+        {
+          "begin": "__",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.underline.wikidot"
+            }
+          },
+          "end": "__",
+          "name": "markup.underline.wikidot",
+          "patterns": [
+            {
+              "include": "#inline"
+            }
+          ]
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.image.wikidot"
+            },
+            "2": {
+              "name": "markup.underline.link.wikidot"
+            },
+            "3": {
+              "name": "punctuation.definition.image.wikidot"
+            }
+          },
+          "match": "(\\{\\{)(.+?)(\\}\\})",
+          "name": "meta.image.inline.wikidot"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.link.wikidot"
+            },
+            "2": {
+              "name": "entity.name.tag.wikidot"
+            },
+            "3": {
+              "name": "markup.underline.link.wikidot"
+            },
+            "4": {
+              "name": "punctuation.definition.link.wikidot"
+            }
+          },
+          "comment": "[#anchorName display text]",
+          "match": "(\\[)(#.+?) (.+?)(\\])",
+          "name": "meta.link.to.anchor.wikidot"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.link.wikidot"
+            },
+            "2": {
+              "name": "entity.name.tag.wikidot"
+            },
+            "3": {
+              "name": "markup.underline.link.wikidot"
+            },
+            "4": {
+              "name": "punctuation.definition.link.wikidot"
+            }
+          },
+          "comment": "[((bibcite Ebstein1996))]",
+          "match": "(\\[\\(\\()(bibcite) +(.+)(\\)\\)\\])",
+          "name": "meta.link.bibcite.wikidot"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.link.wikidot"
+            },
+            "2": {
+              "name": "markup.underline.link.wikidot"
+            },
+            "3": {
+              "name": "punctuation.definition.link.wikidot"
+            }
+          },
+          "comment": ": name: reference",
+          "match": "^(: )([^:]*)(:)",
+          "name": "meta.link.bibEntry.wikidot"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.link.wikidot"
+            },
+            "2": {
+              "name": "entity.name.tag.wikidot"
+            },
+            "3": {
+              "name": "punctuation.definition.link.wikidot"
+            }
+          },
+          "comment": "[[bibliography]]",
+          "match": "(\\[\\[/?)(bibliography)(\\]\\])",
+          "name": "meta.tag.bib.wikidot"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.link.wikidot"
+            },
+            "2": {
+              "name": "entity.name.tag.wikidot"
+            },
+            "3": {
+              "name": "markup.underline.link.wikidot"
+            },
+            "4": {
+              "name": "punctuation.definition.link.wikidot"
+            }
+          },
+          "comment": "[[# anchor-name]]",
+          "match": "(\\[\\[)(# )(.+?)(\\]\\])",
+          "name": "meta.anchor.wikidot"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.link.wikidot"
+            },
+            "2": {
+              "name": "markup.underline.link.wikidot"
+            },
+            "3": {
+              "name": "entity.name.tag.wikidot"
+            },
+            "4": {
+              "name": "punctuation.definition.link.wikidot"
+            }
+          },
+          "comment": "[[[match any link]]]",
+          "match": "(\\[{1,3})([^\\] ]*)(| )?([^\\]]*)?(\\]{1,3})",
+          "name": "meta.link.wikidot"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.link.wikidot"
+            },
+            "2": {
+              "name": "markup.underline.link.interwiki.wikidot"
+            },
+            "3": {
+              "name": "punctuation.definition.link.wikidot"
+            }
+          },
+          "match": "(\\[\\[)([^\\[\\]]+\\>[^|\\]]+)(\\]\\])"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "markup.underline.link.wikidot"
+            }
+          },
+          "match": "((https?|telnet|gopher|wais|ftp|ed2k|irc)://[\\w/\\#~:.?+=&%@!\\-;,]+?(?=[.:?\\-;,]*[^\\w/\\#~:.?+=&%@!\\-;,]))"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.link.wikidot"
+            },
+            "2": {
+              "name": "markup.underline.link.wikidot"
+            },
+            "3": {
+              "name": "punctuation.definition.link.wikidot"
+            }
+          },
+          "match": "(<)([\\w0-9\\-_.]+?@[\\w\\-]+\\.[\\w\\-\\.]+\\.*[\\w]+)(\\>)",
+          "name": "meta.link.email.wikidot"
+        }
+      ]
+    },
+    "php": {
+      "patterns": [
+        {
+          "begin": "(^\\s*)?(?=<php>)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.embedded.leading.wikidot"
+            }
+          },
+          "contentName": "meta.embedded.block.php",
+          "end": "(?<=</php>)(?!<php>)(\\s*$\\n?)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.embedded.trailing.wikidot"
+            }
+          },
+          "patterns": [
+            {
+              "begin": "((<)(php)(>))",
+              "beginCaptures": {
+                "0": {
+                  "name": "punctuation.definition.embedded.begin.wikidot"
+                },
+                "1": {
+                  "name": "meta.tag.template.wikidot"
+                },
+                "2": {
+                  "name": "punctuation.definition.tag.wikidot"
+                },
+                "3": {
+                  "name": "entity.name.tag.wikidot"
+                },
+                "4": {
+                  "name": "punctuation.definition.tag.wikidot"
+                }
+              },
+              "contentName": "source.php",
+              "end": "(((</))(php)(>))",
+              "endCaptures": {
+                "0": {
+                  "name": "punctuation.definition.embedded.end.wikidot"
+                },
+                "1": {
+                  "name": "meta.tag.template.wikidot"
+                },
+                "2": {
+                  "name": "punctuation.definition.tag.wikidot"
+                },
+                "3": {
+                  "name": "source.php"
+                },
+                "4": {
+                  "name": "entity.name.tag.wikidot"
+                },
+                "5": {
+                  "name": "punctuation.definition.tag.wikidot"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "text.html.php#language"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scopeName": "text.html.wikidot",
+  "uuid": "3E4B200F-1C2B-46B9-A715-822F6C0CB4F5"
+}

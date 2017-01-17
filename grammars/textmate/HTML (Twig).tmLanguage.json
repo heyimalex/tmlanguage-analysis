@@ -1,0 +1,135 @@
+{
+  "fileTypes": [
+    "twig"
+  ],
+  "foldingStartMarker": "{% (block|if|else|elseif|for)",
+  "foldingStopMarker": "{% (endblock|endif|endfor|trigger|url) %}",
+  "keyEquivalent": "^~T",
+  "name": "HTML (Twig)",
+  "patterns": [
+    {
+      "comment": "Since html is valid in Twig templates include the html patterns",
+      "include": "text.html.basic"
+    },
+    {
+      "begin": "{#",
+      "end": "#}",
+      "name": "comment.block.twig"
+    },
+    {
+      "match": "\\$[a-z_\\.]+",
+      "name": "variable.other.twig"
+    },
+    {
+      "begin": "\\${",
+      "captures": {
+        "1": {
+          "name": "entity.other.twig"
+        }
+      },
+      "end": "}",
+      "name": "variable.other.twig",
+      "patterns": [
+        {
+          "match": "\\|(\\s?)([^\\( ]+)\\b",
+          "name": "support.function.filter.twig"
+        },
+        {
+          "begin": "'",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.twig"
+            }
+          },
+          "end": "'",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.twig"
+            }
+          },
+          "name": "string.quoted.single.twig"
+        },
+        {
+          "begin": "\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.twig"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.twig"
+            }
+          },
+          "name": "string.quoted.double.twig"
+        },
+        {
+          "match": "[a-zA-Z_]+",
+          "name": "string.unquoted.twig"
+        }
+      ]
+    },
+    {
+      "begin": "{%",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.tag.begin.twig"
+        }
+      },
+      "end": "%}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.tag.end.twig"
+        }
+      },
+      "name": "meta.tag.template.twig",
+      "patterns": [
+        {
+          "match": "\\b(block|endblock|extends|for|endfor|if|include|else|elseif|endif|trigger|url)\\b",
+          "name": "keyword.control.twig"
+        },
+        {
+          "match": "\\b(and|or|not|in|by|as)\\b",
+          "name": "keyword.operator.twig"
+        },
+        {
+          "begin": "'",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.twig"
+            }
+          },
+          "end": "'",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.twig"
+            }
+          },
+          "name": "string.quoted.single.twig"
+        },
+        {
+          "begin": "\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.twig"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.twig"
+            }
+          },
+          "name": "string.quoted.double.twig"
+        },
+        {
+          "match": "[a-zA-Z_]+",
+          "name": "string.unquoted.twig"
+        }
+      ]
+    }
+  ],
+  "scopeName": "text.html.twig",
+  "uuid": "4E0E1804-0A52-4E0B-BD99-37AFAF9823D3"
+}

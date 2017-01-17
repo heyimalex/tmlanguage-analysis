@@ -1,0 +1,1015 @@
+{
+  "fileTypes": [],
+  "name": "TextMate Settings",
+  "patterns": [
+    {
+      "begin": "(?=\\{)",
+      "end": "(?=not)possible",
+      "patterns": [
+        {
+          "include": "#dictionary_root"
+        },
+        {
+          "include": "#stray"
+        }
+      ]
+    },
+    {
+      "include": "#stray"
+    }
+  ],
+  "repository": {
+    "array": {
+      "begin": "\\G\\(",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.array.begin.plist"
+        }
+      },
+      "end": "\\)",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.array.end.plist"
+        }
+      },
+      "name": "meta.scope.array.plist",
+      "patterns": [
+        {
+          "include": "#array_item"
+        },
+        {
+          "include": "#stray"
+        }
+      ]
+    },
+    "array_item": {
+      "begin": "(?=<|\\(|\\{|\"|'|[-a-zA-Z0-9_.])",
+      "end": ",|(?=\\))",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.separator.array.plist"
+        }
+      },
+      "name": "meta.scope.array-item.plist",
+      "patterns": [
+        {
+          "include": "#dictionary"
+        },
+        {
+          "include": "#array"
+        },
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#stray"
+        }
+      ]
+    },
+    "dictionary": {
+      "begin": "\\G\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.dictionary.begin.plist"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.dictionary.end.plist"
+        }
+      },
+      "name": "meta.scope.dictionary.plist",
+      "patterns": [
+        {
+          "include": "#dictionary_item"
+        },
+        {
+          "include": "#stray"
+        }
+      ]
+    },
+    "dictionary_item": {
+      "begin": "(?>((\")((?:[^\"\\\\]|\\\\.)*)(\"))|((')((?:[^'\\\\]|\\\\.)*)('))|([-a-zA-Z0-9_.]+))",
+      "beginCaptures": {
+        "1": {
+          "name": "string.quoted.double.plist"
+        },
+        "2": {
+          "name": "punctuation.definition.string.begin.plist"
+        },
+        "3": {
+          "name": "constant.other.key.plist"
+        },
+        "4": {
+          "name": "punctuation.definition.string.end.plist"
+        },
+        "5": {
+          "name": "string.quoted.single.plist"
+        },
+        "6": {
+          "name": "punctuation.definition.string.begin.plist"
+        },
+        "7": {
+          "name": "constant.other.key.plist"
+        },
+        "8": {
+          "name": "punctuation.definition.string.end.plist"
+        },
+        "9": {
+          "name": "constant.other.key.plist"
+        }
+      },
+      "end": ";|(?=\\})",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.separator.dictionary.plist"
+        }
+      },
+      "name": "meta.scope.dictionary-item.${3/[[\\s\\x20-\\x7F]&&[:^alnum:]]//g}${7/[[\\s\\x20-\\x7F]&&[:^alnum:]]//g}${9/[[\\s\\x20-\\x7F]&&[:^alnum:]]//g}.plist",
+      "patterns": [
+        {
+          "include": "#dictionary_item_contents"
+        }
+      ]
+    },
+    "dictionary_item_contents": {
+      "patterns": [
+        {
+          "begin": "=",
+          "end": "(?=;|\\})",
+          "patterns": [
+            {
+              "begin": "(?=<|\\(|\\{|\"|'|[-a-zA-Z0-9_.])",
+              "end": "(?=;|\\})",
+              "patterns": [
+                {
+                  "include": "#dictionary"
+                },
+                {
+                  "include": "#array"
+                },
+                {
+                  "include": "#string"
+                },
+                {
+                  "include": "#stray"
+                }
+              ]
+            },
+            {
+              "include": "#stray_alpha"
+            }
+          ]
+        },
+        {
+          "include": "#stray"
+        }
+      ]
+    },
+    "dictionary_root": {
+      "begin": "\\G\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.dictionary.begin.plist"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.dictionary.end.plist"
+        }
+      },
+      "name": "meta.scope.dictionary.plist",
+      "patterns": [
+        {
+          "begin": "comment",
+          "beginCaptures": {
+            "0": {
+              "name": "constant.other.key.plist"
+            }
+          },
+          "end": ";|(?=\\})",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.separator.dictionary.plist"
+            }
+          },
+          "name": "meta.scope.dictionary-item.$0.plist",
+          "patterns": [
+            {
+              "begin": "=",
+              "end": "(?=;|\\})",
+              "patterns": [
+                {
+                  "begin": "(?=\"|')",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "begin": "\\G'",
+                      "beginCaptures": {
+                        "0": {
+                          "name": "punctuation.definition.comment.begin.plist"
+                        }
+                      },
+                      "end": "'(?!')",
+                      "endCaptures": {
+                        "0": {
+                          "name": "punctuation.definition.comment.end.plist"
+                        }
+                      },
+                      "name": "comment.block.plist",
+                      "patterns": [
+                        {
+                          "match": "''",
+                          "name": "constant.character.escape.plist"
+                        }
+                      ]
+                    },
+                    {
+                      "begin": "\\G\"",
+                      "beginCaptures": {
+                        "0": {
+                          "name": "punctuation.definition.comment.begin.plist"
+                        }
+                      },
+                      "end": "\"",
+                      "endCaptures": {
+                        "0": {
+                          "name": "punctuation.definition.comment.end.plist"
+                        }
+                      },
+                      "name": "comment.block.plist",
+                      "patterns": [
+                        {
+                          "match": "\\\\(\"|\\\\)",
+                          "name": "constant.character.escape.plist"
+                        }
+                      ]
+                    },
+                    {
+                      "include": "#stray"
+                    }
+                  ]
+                },
+                {
+                  "include": "#stray"
+                }
+              ]
+            },
+            {
+              "include": "#stray"
+            }
+          ]
+        },
+        {
+          "begin": "completionCommand|characterClass|background|foreground|caret|invisibles|selection|fontStyle|fontName|indentOnPaste|wordCharacters",
+          "beginCaptures": {
+            "0": {
+              "name": "constant.other.key.plist"
+            }
+          },
+          "end": ";|(?=\\})",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.separator.dictionary.plist"
+            }
+          },
+          "name": "meta.scope.dictionary-item.$0.plist",
+          "patterns": [
+            {
+              "begin": "=",
+              "end": "(?=;|\\})",
+              "patterns": [
+                {
+                  "begin": "(?=\"|'|[-a-zA-Z0-9_.])",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "include": "#string"
+                    },
+                    {
+                      "include": "#stray_alpha"
+                    }
+                  ]
+                },
+                {
+                  "include": "#stray_alpha"
+                }
+              ]
+            },
+            {
+              "include": "#stray"
+            }
+          ]
+        },
+        {
+          "begin": "indentedSoftWrap",
+          "beginCaptures": {
+            "0": {
+              "name": "constant.other.key.plist"
+            }
+          },
+          "end": ";|(?=\\})",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.separator.dictionary.plist"
+            }
+          },
+          "name": "meta.scope.dictionary-item.$0.plist",
+          "patterns": [
+            {
+              "begin": "=",
+              "end": "(?=;|\\})",
+              "patterns": [
+                {
+                  "begin": "(?=\\{)",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "begin": "\\G\\{",
+                      "beginCaptures": {
+                        "0": {
+                          "name": "punctuation.definition.dictionary.begin.plist"
+                        }
+                      },
+                      "end": "\\}",
+                      "endCaptures": {
+                        "0": {
+                          "name": "punctuation.definition.dictionary.end.plist"
+                        }
+                      },
+                      "name": "meta.scope.dictionary.plist",
+                      "patterns": [
+                        {
+                          "begin": "match",
+                          "beginCaptures": {
+                            "0": {
+                              "name": "constant.other.key.plist"
+                            }
+                          },
+                          "end": ";|(?=\\})",
+                          "endCaptures": {
+                            "0": {
+                              "name": "punctuation.separator.dictionary.plist"
+                            }
+                          },
+                          "name": "meta.scope.dictionary-item.$0.plist",
+                          "patterns": [
+                            {
+                              "begin": "=",
+                              "end": "(?=;|\\})",
+                              "patterns": [
+                                {
+                                  "begin": "(?=\"|')",
+                                  "end": "(?=;|\\})",
+                                  "patterns": [
+                                    {
+                                      "include": "#string_regexp"
+                                    },
+                                    {
+                                      "include": "#stray"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "include": "#stray_alpha"
+                                }
+                              ]
+                            },
+                            {
+                              "include": "#stray"
+                            }
+                          ]
+                        },
+                        {
+                          "begin": "format",
+                          "beginCaptures": {
+                            "0": {
+                              "name": "constant.other.key.plist"
+                            }
+                          },
+                          "end": ";|(?=\\})",
+                          "endCaptures": {
+                            "0": {
+                              "name": "punctuation.separator.dictionary.plist"
+                            }
+                          },
+                          "name": "meta.scope.dictionary-item.$0.plist",
+                          "patterns": [
+                            {
+                              "begin": "=",
+                              "end": "(?=;|\\})",
+                              "patterns": [
+                                {
+                                  "begin": "(?=\"|'|[-a-zA-Z0-9_.])",
+                                  "end": "(?=;|\\})",
+                                  "patterns": [
+                                    {
+                                      "include": "#string"
+                                    },
+                                    {
+                                      "include": "#stray_alpha"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "include": "#stray_alpha"
+                                }
+                              ]
+                            },
+                            {
+                              "include": "#stray"
+                            }
+                          ]
+                        },
+                        {
+                          "begin": "(?>((\")((?:[^\"\\\\]|\\\\.)*)(\"))|((')((?:[^'\\\\]|\\\\.)*)('))|([-a-zA-Z0-9_.]+))",
+                          "beginCaptures": {
+                            "1": {
+                              "name": "string.quoted.double.plist"
+                            },
+                            "2": {
+                              "name": "punctuation.definition.string.begin.plist"
+                            },
+                            "3": {
+                              "name": "invalid.illegal.invalid_key.plist"
+                            },
+                            "4": {
+                              "name": "punctuation.definition.string.end.plist"
+                            },
+                            "5": {
+                              "name": "string.quoted.single.plist"
+                            },
+                            "6": {
+                              "name": "punctuation.definition.string.begin.plist"
+                            },
+                            "7": {
+                              "name": "invalid.illegal.invalid_key.plist"
+                            },
+                            "8": {
+                              "name": "punctuation.definition.string.end.plist"
+                            },
+                            "9": {
+                              "name": "invalid.illegal.invalid_key.plist"
+                            }
+                          },
+                          "end": ";|(?=\\})",
+                          "endCaptures": {
+                            "0": {
+                              "name": "punctuation.separator.dictionary.plist"
+                            }
+                          },
+                          "name": "meta.scope.dictionary-item.${3/[[\\s\\x20-\\x7F]&&[:^alnum:]]//g}${7/[[\\s\\x20-\\x7F]&&[:^alnum:]]//g}${9/[[\\s\\x20-\\x7F]&&[:^alnum:]]//g}.plist",
+                          "patterns": [
+                            {
+                              "include": "#dictionary_item_contents"
+                            }
+                          ]
+                        },
+                        {
+                          "include": "#stray"
+                        }
+                      ]
+                    },
+                    {
+                      "include": "#stray"
+                    }
+                  ]
+                },
+                {
+                  "include": "#stray"
+                }
+              ]
+            },
+            {
+              "include": "#stray"
+            }
+          ]
+        },
+        {
+          "begin": "fontSize",
+          "beginCaptures": {
+            "0": {
+              "name": "constant.other.key.plist"
+            }
+          },
+          "end": ";|(?=\\})",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.separator.dictionary.plist"
+            }
+          },
+          "name": "meta.scope.dictionary-item.$0.plist",
+          "patterns": [
+            {
+              "begin": "=",
+              "end": "(?=;|\\})",
+              "patterns": [
+                {
+                  "begin": "(?=\"|'|[-a-zA-Z0-9_.])",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "begin": "\\G'",
+                      "beginCaptures": {
+                        "0": {
+                          "name": "punctuation.definition.string.begin.plist"
+                        }
+                      },
+                      "end": "'(?!')",
+                      "endCaptures": {
+                        "0": {
+                          "name": "punctuation.definition.string.end.plist"
+                        }
+                      },
+                      "name": "string.quoted.single.plist",
+                      "patterns": [
+                        {
+                          "captures": {
+                            "1": {
+                              "name": "constant.numeric.plist"
+                            },
+                            "3": {
+                              "name": "keyword.other.unit.plist"
+                            }
+                          },
+                          "match": "\\G([0-9]+(\\.[0-9]+)?)([ ]?(%|pt|em))?"
+                        }
+                      ]
+                    },
+                    {
+                      "begin": "\\G\"",
+                      "beginCaptures": {
+                        "0": {
+                          "name": "punctuation.definition.string.begin.plist"
+                        }
+                      },
+                      "end": "\"",
+                      "endCaptures": {
+                        "0": {
+                          "name": "punctuation.definition.string.end.plist"
+                        }
+                      },
+                      "name": "string.quoted.double.plist",
+                      "patterns": [
+                        {
+                          "match": "\\G[0-9]+(\\.[0-9]+)?[ ]?(%|pt|em)?",
+                          "name": "constant.numeric.plist"
+                        }
+                      ]
+                    },
+                    {
+                      "include": "#stray_alpha"
+                    }
+                  ]
+                },
+                {
+                  "include": "#stray"
+                }
+              ]
+            },
+            {
+              "include": "#stray"
+            }
+          ]
+        },
+        {
+          "begin": "completions|highlightPairs|smartTypingPairs|shellVariables",
+          "beginCaptures": {
+            "0": {
+              "name": "constant.other.key.plist"
+            }
+          },
+          "end": ";|(?=\\})",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.separator.dictionary.plist"
+            }
+          },
+          "name": "meta.scope.dictionary-item.$0.plist",
+          "patterns": [
+            {
+              "begin": "=",
+              "end": "(?=;|\\})",
+              "patterns": [
+                {
+                  "begin": "(?=\\()",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "include": "#array"
+                    },
+                    {
+                      "include": "#stray"
+                    }
+                  ]
+                },
+                {
+                  "include": "#stray"
+                }
+              ]
+            },
+            {
+              "include": "#stray"
+            }
+          ]
+        },
+        {
+          "begin": "disableDefaultCompletion|showInSymbolList|spellChecking|misspelled|bold|italic|underline|softWrap",
+          "beginCaptures": {
+            "0": {
+              "name": "constant.other.key.plist"
+            }
+          },
+          "end": ";|(?=\\})",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.separator.dictionary.plist"
+            }
+          },
+          "name": "meta.scope.dictionary-item.$0.plist",
+          "patterns": [
+            {
+              "begin": "=",
+              "end": "(?=;|\\})",
+              "patterns": [
+                {
+                  "begin": "(?=[01])",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "match": "\\G[01]",
+                      "name": "constant.numeric.plist"
+                    },
+                    {
+                      "include": "#stray_alpha"
+                    }
+                  ]
+                },
+                {
+                  "begin": "(?=['\"])",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "captures": {
+                        "1": {
+                          "name": "punctuation.definition.string.begin.plist"
+                        },
+                        "2": {
+                          "name": "constant.numeric.plist"
+                        },
+                        "3": {
+                          "name": "punctuation.definition.string.end.plist"
+                        }
+                      },
+                      "match": "(')([01])(')",
+                      "name": "string.quoted.single.plist"
+                    },
+                    {
+                      "captures": {
+                        "1": {
+                          "name": "punctuation.definition.string.begin.plist"
+                        },
+                        "2": {
+                          "name": "constant.numeric.plist"
+                        },
+                        "3": {
+                          "name": "punctuation.definition.string.end.plist"
+                        }
+                      },
+                      "match": "(\")([01])(\")",
+                      "name": "string.quoted.double.plist"
+                    },
+                    {
+                      "include": "#stray_alpha"
+                    }
+                  ]
+                },
+                {
+                  "begin": "(?=:)",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "match": "\\G:(true|false)",
+                      "name": "constant.language.boolean.plist"
+                    },
+                    {
+                      "include": "#stray_alpha"
+                    }
+                  ]
+                },
+                {
+                  "include": "#stray"
+                }
+              ]
+            },
+            {
+              "include": "#stray"
+            }
+          ]
+        },
+        {
+          "begin": "disableIndentCorrections",
+          "beginCaptures": {
+            "0": {
+              "name": "constant.other.key.plist"
+            }
+          },
+          "end": ";|(?=\\})",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.separator.dictionary.plist"
+            }
+          },
+          "name": "meta.scope.dictionary-item.$0.plist",
+          "patterns": [
+            {
+              "begin": "=",
+              "end": "(?=;|\\})",
+              "patterns": [
+                {
+                  "begin": "(?=[01])",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "match": "\\G[01]",
+                      "name": "constant.numeric.plist"
+                    },
+                    {
+                      "include": "#stray_alpha"
+                    }
+                  ]
+                },
+                {
+                  "begin": "(?=['\"])",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "captures": {
+                        "1": {
+                          "name": "punctuation.definition.string.begin.plist"
+                        },
+                        "2": {
+                          "name": "constant.numeric.plist"
+                        },
+                        "4": {
+                          "name": "punctuation.definition.string.end.plist"
+                        }
+                      },
+                      "match": "(')(?:([01])|(emptyLines))(')",
+                      "name": "string.quoted.single.plist"
+                    },
+                    {
+                      "captures": {
+                        "1": {
+                          "name": "punctuation.definition.string.begin.plist"
+                        },
+                        "2": {
+                          "name": "constant.numeric.plist"
+                        },
+                        "4": {
+                          "name": "punctuation.definition.string.end.plist"
+                        }
+                      },
+                      "match": "(\")(?:([01])|(emptyLines))(\")",
+                      "name": "string.quoted.double.plist"
+                    },
+                    {
+                      "include": "#stray_alpha"
+                    }
+                  ]
+                },
+                {
+                  "begin": "(?=:)",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "match": "\\G:(true|false)",
+                      "name": "constant.language.boolean.plist"
+                    },
+                    {
+                      "include": "#stray_alpha"
+                    }
+                  ]
+                },
+                {
+                  "include": "#stray"
+                }
+              ]
+            },
+            {
+              "include": "#stray"
+            }
+          ]
+        },
+        {
+          "begin": "symbolTransformation|decreaseIndentPattern|increaseIndentPattern|indentNextLinePattern|unIndentedLinePattern|zeroIndentPattern|foldingStartMarker|foldingStopMarker|foldingIndentedBlockIgnore|foldingIndentedBlockStart",
+          "beginCaptures": {
+            "0": {
+              "name": "constant.other.key.plist"
+            }
+          },
+          "end": ";|(?=\\})",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.separator.dictionary.plist"
+            }
+          },
+          "name": "meta.scope.dictionary-item.$0.plist",
+          "patterns": [
+            {
+              "begin": "=",
+              "end": "(?=;|\\})",
+              "patterns": [
+                {
+                  "begin": "(?=\"|')",
+                  "end": "(?=;|\\})",
+                  "patterns": [
+                    {
+                      "include": "#string_regexp"
+                    },
+                    {
+                      "include": "#stray"
+                    }
+                  ]
+                },
+                {
+                  "include": "#stray_alpha"
+                }
+              ]
+            },
+            {
+              "include": "#stray"
+            }
+          ]
+        },
+        {
+          "begin": "(?>((\")((?:[^\"\\\\]|\\\\.)*)(\"))|((')((?:[^'\\\\]|\\\\.)*)('))|([-a-zA-Z0-9_.]+))",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.double.plist"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.plist"
+            },
+            "3": {
+              "name": "invalid.illegal.invalid_key.plist"
+            },
+            "4": {
+              "name": "punctuation.definition.string.end.plist"
+            },
+            "5": {
+              "name": "string.quoted.single.plist"
+            },
+            "6": {
+              "name": "punctuation.definition.string.begin.plist"
+            },
+            "7": {
+              "name": "invalid.illegal.invalid_key.plist"
+            },
+            "8": {
+              "name": "punctuation.definition.string.end.plist"
+            },
+            "9": {
+              "name": "invalid.illegal.invalid_key.plist"
+            }
+          },
+          "end": ";|(?=\\})",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.separator.dictionary.plist"
+            }
+          },
+          "name": "meta.scope.dictionary-item.${3/[[\\s\\x20-\\x7F]&&[:^alnum:]]//g}${7/[[\\s\\x20-\\x7F]&&[:^alnum:]]//g}${9/[[\\s\\x20-\\x7F]&&[:^alnum:]]//g}.plist",
+          "patterns": [
+            {
+              "include": "#dictionary_item_contents"
+            }
+          ]
+        },
+        {
+          "include": "#stray"
+        }
+      ]
+    },
+    "stray": {
+      "begin": "\\S",
+      "end": "(?=\\{|\\(|/\\*|//|\"|'|<|,|;|\\)|\\}|=)",
+      "name": "invalid.illegal.character-not-allowed-here.plist"
+    },
+    "stray_alpha": {
+      "begin": "\\S",
+      "end": "(?=\\{|\\(|/\\*|//|\"|'|<|,|;|\\)|\\}|=|\\b[a-zA-Z0-9]|[-_.])",
+      "name": "invalid.illegal.character-not-allowed-here.plist"
+    },
+    "string": {
+      "patterns": [
+        {
+          "begin": "\\G'",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.plist"
+            }
+          },
+          "end": "'(?!')",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.plist"
+            }
+          },
+          "name": "string.quoted.single.plist",
+          "patterns": [
+            {
+              "match": "''",
+              "name": "constant.character.escape.plist"
+            }
+          ]
+        },
+        {
+          "begin": "\\G\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.plist"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.plist"
+            }
+          },
+          "name": "string.quoted.double.plist",
+          "patterns": [
+            {
+              "match": "\\\\(\"|\\\\)",
+              "name": "constant.character.escape.plist"
+            }
+          ]
+        },
+        {
+          "match": "\\G[-+]?\\d+(\\.\\d*)?(E[-+]\\d+)?(?!\\w)",
+          "name": "constant.numeric.plist"
+        },
+        {
+          "match": "\\G[-a-zA-Z0-9_.]+",
+          "name": "string.unquoted.plist"
+        }
+      ]
+    },
+    "string_regexp": {
+      "patterns": [
+        {
+          "begin": "\\G'",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.plist"
+            }
+          },
+          "end": "'(?!')",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.plist"
+            }
+          },
+          "name": "string.regexp.plist",
+          "patterns": [
+            {
+              "match": "''",
+              "name": "constant.character.escape.plist"
+            },
+            {
+              "include": "source.regexp.oniguruma"
+            }
+          ]
+        },
+        {
+          "begin": "\\G\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.plist"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.plist"
+            }
+          },
+          "name": "string.regexp.plist",
+          "patterns": [
+            {
+              "match": "\\\\(\"|\\\\)",
+              "name": "constant.character.escape.plist"
+            },
+            {
+              "include": "source.regexp.oniguruma"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scopeName": "source.plist.textmate.settings",
+  "uuid": "CF3947B5-C5CE-46A1-8E84-724C6C986861"
+}

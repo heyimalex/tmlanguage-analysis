@@ -1,0 +1,15 @@
+{
+  "fileTypes": [],
+  "foldingStartMarker": "",
+  "foldingStopMarker": "",
+  "keyEquivalent": "^~U",
+  "name": "Unicode Highlight No Latin",
+  "patterns": [
+    {
+      "match": "[\\x{250}-\\x{1C7F}\\x{1F00}-\\x{1FFF}\\x{2C00}-\\x{2C5F}\\x{2C80}-\\x{2DFF}\\x{2E80}-\\x{A69F}\\x{A800}-\\x{10FFFF}]+",
+      "name": "invalid"
+    }
+  ],
+  "scopeName": "unicode.check.noLatin",
+  "uuid": "16D31FDD-06BB-4072-80B7-AD4E5D6C997E"
+}

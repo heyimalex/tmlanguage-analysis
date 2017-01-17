@@ -1,0 +1,74 @@
+{
+  "fileTypes": [
+    "wiki"
+  ],
+  "foldingStartMarker": "\\{{{\\s*$",
+  "foldingStopMarker": "^\\s*\\}}}",
+  "keyEquivalent": "^~G",
+  "name": "Google Code Wiki",
+  "patterns": [
+    {
+      "match": "^#.*$\\n?",
+      "name": "comment.line.number-sign"
+    },
+    {
+      "match": "^={1,6}[^=]*={1,6}$",
+      "name": "markup.heading.googlecodewiki"
+    },
+    {
+      "begin": "{{{",
+      "end": "}}}",
+      "name": "markup.raw"
+    },
+    {
+      "match": "\\`[^`]*\\`",
+      "name": "markup.raw"
+    },
+    {
+      "match": "\\*[^*]*\\*",
+      "name": "markup.raw"
+    },
+    {
+      "match": "_[^_]*_",
+      "name": "markup.italic"
+    },
+    {
+      "match": "\\^[^^]*\\^",
+      "name": "markup.italic"
+    },
+    {
+      "match": ",,[^,]*,,",
+      "name": "markup.italic"
+    },
+    {
+      "match": "~~[^~]*~~",
+      "name": "markup.italic"
+    },
+    {
+      "match": "\\[.*\\]",
+      "name": "markup.underline.link"
+    },
+    {
+      "match": "^----+$\\n?",
+      "name": "markup.raw"
+    },
+    {
+      "match": "^\\s+\\*.*\\n?",
+      "name": "markup.list.unnumbered"
+    },
+    {
+      "match": "^\\s+#.*\\n?",
+      "name": "markup.list.numbered"
+    },
+    {
+      "match": "^\\s+[^\\s]+.*\\n?",
+      "name": "markup.quote"
+    },
+    {
+      "match": "\\|\\|",
+      "name": "keyword.operator"
+    }
+  ],
+  "scopeName": "text.html.googlecodewiki",
+  "uuid": "F50B61C5-3BBD-4247-9DFE-7DA094F35CA2"
+}

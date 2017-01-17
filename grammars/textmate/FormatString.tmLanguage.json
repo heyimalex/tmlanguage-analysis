@@ -1,0 +1,186 @@
+{
+  "comment": "\n\t\t\\\\, \\$, \\(\n\t\t\\n, \\t\n\t\t\\U, \\L, \\E, \\u, \\l\n\n\t\t$0-n | $foo\n\n\t\t${«var»:[/upcase][/downcase][/(capitalize|titlecase)][/asciify]}\n\n\t\t${«var»:?«if»:«else»}\n\n\t\t${«var»:+«if»}\n\t\t${«var»:-«else»}\n\t\t${«var»:«else»}\n\n\t\t${«var»/«regexp»/«format»/[giems]}\n\n\t\t(?«var»:«if»:«else»)\n\t\t(?«var»:«if»)\n\t",
+  "fileTypes": [],
+  "hideFromUser": true,
+  "name": "Format String",
+  "patterns": [
+    {
+      "match": "\\\\[\\\\$(nt]",
+      "name": "constant.character.escape.format-string"
+    },
+    {
+      "match": "\\\\[ULEul]",
+      "name": "constant.other.reference.format-string"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.variable.begin.format-string"
+        }
+      },
+      "comment": "$0-n | $foo",
+      "match": "(\\$)(?:\\d+|\\w+)",
+      "name": "variable.other.readwrite.format-string"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.transform.begin.format-string"
+        },
+        "2": {
+          "name": "punctuation.separator.transform.format-string"
+        },
+        "3": {
+          "name": "invalid.illegal.unknown-transform.format-string"
+        },
+        "4": {
+          "name": "punctuation.definition.transform.end.format-string"
+        }
+      },
+      "comment": "${«var»:[/upcase][/downcase][/(capitalize|titlecase)][/asciify]}",
+      "match": "(\\$\\{)\\w+(:/)(?:upcase|downcase|capitalize|titlecase|asciify|(.*?))(\\})",
+      "name": "variable.other.transform.format-string"
+    },
+    {
+      "begin": "(\\$\\{)\\w+(:\\?)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.condition.begin.format-string"
+        },
+        "2": {
+          "name": "punctuation.separator.condition.format-string"
+        }
+      },
+      "comment": "${«var»:?«if»:«else»}",
+      "end": "\\}",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.condition.end.format-string"
+        }
+      },
+      "name": "variable.other.condition.binary.format-string",
+      "patterns": [
+        {
+          "match": "\\\\[:}]",
+          "name": "constant.character.escape.format-string"
+        },
+        {
+          "include": "textmate.format-string"
+        },
+        {
+          "begin": ":",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.separator.condition.format-string"
+            }
+          },
+          "end": "(?=\\})",
+          "patterns": [
+            {
+              "match": "\\\\[}]",
+              "name": "constant.character.escape.format-string"
+            },
+            {
+              "include": "textmate.format-string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "begin": "(\\$\\{)\\w+(:[-+]?)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.condition.begin.format-string"
+        },
+        "2": {
+          "name": "punctuation.separator.condition.format-string"
+        }
+      },
+      "comment": "${«var»:+«if»} | ${«var»:-«else»} | ${«var»:«else»}",
+      "end": "\\}",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.condition.end.format-string"
+        }
+      },
+      "name": "variable.other.condition.unary.format-string",
+      "patterns": [
+        {
+          "match": "\\\\}",
+          "name": "constant.character.escape.format-string"
+        },
+        {
+          "include": "textmate.format-string"
+        }
+      ]
+    },
+    {
+      "begin": "(\\$\\{)\\w+(/)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.replacement.begin.format-string"
+        },
+        "2": {
+          "name": "punctuation.separator.replacement.format-string"
+        }
+      },
+      "comment": "${«var»/«regexp»/«format»/[giems]}",
+      "end": "\\}",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.replacement.end.format-string"
+        }
+      },
+      "name": "variable.other.replacement.format-string",
+      "patterns": [
+        {
+          "match": "\\\\/",
+          "name": "constant.character.escape.format-string"
+        },
+        {
+          "include": "source.regexp.oniguruma"
+        },
+        {
+          "begin": "/",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.separator.replacement.format-string"
+            }
+          },
+          "end": "(/)([a-z]*)(?=\\})",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.separator.replacement.format-string"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "match": "[^giems]+",
+                  "name": "invalid.illegal.unknown-option.format-string"
+                }
+              ]
+            }
+          },
+          "patterns": [
+            {
+              "match": "\\\\/",
+              "name": "constant.character.escape.format-string"
+            },
+            {
+              "include": "textmate.format-string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "begin": "\\(\\?\\d+:",
+      "comment": "(?«var»:«if»:«else») | (?«var»:«if»)",
+      "end": "\\)",
+      "name": "invalid.deprecated.condition.format-string"
+    }
+  ],
+  "scopeName": "textmate.format-string",
+  "uuid": "405875FC-5E62-41EE-9303-FAE078694E63"
+}

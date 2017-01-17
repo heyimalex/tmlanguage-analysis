@@ -1,0 +1,14 @@
+{
+  "fileTypes": [
+    "ctp",
+    "thtml"
+  ],
+  "name": "HTML (PHP Cake)",
+  "patterns": [
+    {
+      "include": "text.html.php"
+    }
+  ],
+  "scopeName": "text.html.php.cake",
+  "uuid": "3DF2FE0B-94CC-4EE2-A50A-BD4823D1B09D"
+}

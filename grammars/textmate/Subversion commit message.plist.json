@@ -1,0 +1,62 @@
+{
+  "fileTypes": [
+    "svn-commit.tmp",
+    "svn-commit.2.tmp"
+  ],
+  "name": "Subversion Commit Message",
+  "patterns": [
+    {
+      "begin": "\\A(?!^--.*--$)",
+      "end": "(?=^--.*--$)",
+      "name": "meta.scope.message.svn-commit",
+      "patterns": [
+        {
+          "begin": "^\\s*([•·*\\-+]).*$\\n?",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.item.svn-commit"
+            }
+          },
+          "end": "(?=^\\s*([•·*\\-+]|$))",
+          "name": "markup.list.unnumbered.svn-commit"
+        }
+      ]
+    },
+    {
+      "begin": "^--.*--$\\n?",
+      "beginCaptures": {
+        "0": {
+          "name": "meta.separator.svn-commit"
+        }
+      },
+      "contentName": "meta.scope.changed-files.svn-commit",
+      "end": "\\z",
+      "name": "meta.scope.metadata.svn-commit",
+      "patterns": [
+        {
+          "include": "#metadata"
+        }
+      ]
+    }
+  ],
+  "repository": {
+    "metadata": {
+      "patterns": [
+        {
+          "match": "^(M|.M)\\s+.*$\\n?",
+          "name": "markup.changed.svn-commit"
+        },
+        {
+          "match": "^A\\s+.*$\\n?",
+          "name": "markup.inserted.svn-commit"
+        },
+        {
+          "match": "^D\\s+.*$\\n?",
+          "name": "markup.deleted.svn-commit"
+        }
+      ]
+    }
+  },
+  "scopeName": "text.svn-commit",
+  "uuid": "5B201F55-90BC-4A69-9A44-1BABE5A9FE99"
+}

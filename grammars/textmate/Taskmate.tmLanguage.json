@@ -1,0 +1,51 @@
+{
+  "fileTypes": [
+    "todo"
+  ],
+  "keyEquivalent": "^~T",
+  "name": "Taskmate",
+  "patterns": [
+    {
+      "match": "^\\s*(\\w+.+:\\s*$\\n?)",
+      "name": "keyword.control.header.taskmate"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.bullet.completed.taskmate"
+        },
+        "2": {
+          "name": "comment.line.completed.taskmate"
+        }
+      },
+      "match": "^\\s*(\\+|✓)\\s+((?:[^\\@]|(?<!\\s)\\@|\\@(?=\\s))*)",
+      "name": "meta.item.taskmate.completed"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.bullet.pending.taskmate"
+        },
+        "2": {
+          "name": "text.pending.taskmate"
+        }
+      },
+      "match": "^\\s*(-)\\s+((?:[^\\@]|(?<!\\s)\\@)*)",
+      "name": "meta.item.taskmate.pending"
+    },
+    {
+      "match": "(?<=\\s)\\@(?!today|completed)[\\w\\d\\-!?]+\\s?",
+      "name": "meta.tag.taskmate"
+    },
+    {
+      "match": "(?<=\\s)\\@completed \\([\\d\\.:\\-/ ].+\\)\\s?",
+      "name": "meta.tag.taskmate.completed"
+    },
+    {
+      "match": "(?<=\\s)\\@today\\s?",
+      "name": "string.other.tag.taskmate.today"
+    }
+  ],
+  "scopeName": "text.taskmate",
+  "uuid": "3020100E-153C-45EF-ACA3-4C44E7D92A30"
+}

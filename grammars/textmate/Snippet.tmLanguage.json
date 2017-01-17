@@ -1,0 +1,355 @@
+{
+  "fileTypes": [],
+  "name": "Snippet",
+  "patterns": [
+    {
+      "match": "\\\\\\$|\\\\`|\\\\\\\\",
+      "name": "constant.character.escape.tm-snippet"
+    },
+    {
+      "include": "#interpolation"
+    },
+    {
+      "include": "#variables"
+    },
+    {
+      "include": "#transformations"
+    },
+    {
+      "include": "#tab_stops"
+    }
+  ],
+  "repository": {
+    "interpolation": {
+      "begin": "`",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.tm-snippet"
+        }
+      },
+      "end": "`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.tm-snippet"
+        }
+      },
+      "name": "string.interpolated.bash.tm-snippet",
+      "patterns": [
+        {
+          "match": "\\\\`|\\\\\\\\",
+          "name": "constant.character.escape.tm-snippet"
+        }
+      ]
+    },
+    "tab_stops": {
+      "comment": "FINISHED",
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.begin.tm-snippet"
+            },
+            "3": {
+              "name": "punctuation.definition.variable.begin.tm-snippet"
+            },
+            "4": {
+              "name": "punctuation.definition.variable.end.tm-snippet"
+            }
+          },
+          "comment": "$0 | ${0}",
+          "match": "(\\$)(0(?!=\\d)|(\\{)0(?!=\\d)(\\}))",
+          "name": "variable.other.predefined.placeholder.endpoint.tm-snippet"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.begin.tm-snippet"
+            }
+          },
+          "match": "(\\$)\\d+",
+          "name": "variable.other.predefined.placeholder.tm-snippet"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.begin.tm-snippet"
+            },
+            "2": {
+              "name": "punctuation.definition.variable.end.tm-snippet"
+            }
+          },
+          "match": "(\\$\\{)\\d+(\\})",
+          "name": "variable.other.predefined.placeholder.tm-snippet"
+        },
+        {
+          "begin": "(\\$\\{)\\d+(:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.variable.begin.tm-snippet"
+            },
+            "2": {
+              "name": "punctuation.separator.default-value.tm-snippet"
+            }
+          },
+          "end": "(\\})",
+          "endCaptures": {
+            "2": {
+              "name": "punctuation.definition.variable.end.tm-snippet"
+            }
+          },
+          "name": "variable.other.predefined.placeholder.w-default.tm-snippet"
+        }
+      ]
+    },
+    "transformations": {
+      "begin": "(\\$\\{)\\d+(?=/)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.variable.tm-snippet"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.variable.tm-snippet"
+        }
+      },
+      "name": "variable.other.predefined.placeholder.transform.tm-snippet",
+      "patterns": [
+        {
+          "begin": "(?<=/)",
+          "end": "(?=\\})",
+          "patterns": [
+            {
+              "begin": "(?!/)",
+              "end": "(?=/)",
+              "name": "string.other.CHANGETHIS.tm-snippet",
+              "patterns": [
+                {
+                  "match": "(\\$)\\d+",
+                  "name": "variable.other.predefined.register.tm-snippet"
+                },
+                {
+                  "match": "\\\\[ulULE]",
+                  "name": "constant.other.reference.tm-snippet"
+                },
+                {
+                  "comment": "ASK ABOUT \\( HERE AND IN VARIABLES",
+                  "match": "\\\\[nt$\\\\]",
+                  "name": "constant.character.escape.tm-snippet"
+                },
+                {
+                  "begin": "\\(\\?\\d+:",
+                  "end": "\\)",
+                  "name": "meta.conditional-insertion.tm-snippet"
+                }
+              ]
+            },
+            {
+              "begin": "(/)",
+              "beginCaptures": {
+                "0": {
+                  "name": "string.regexp.tm-snippet"
+                },
+                "1": {
+                  "name": "punctuation.definition.string.end.tm-snippet"
+                }
+              },
+              "end": "(?=\\})",
+              "patterns": [
+                {
+                  "comment": "ASK ALLAN ABOUT THIS, IS INCOMPLETE.",
+                  "match": "(?<=/)([imx]+-?[imx]+|-?[imx]+)"
+                },
+                {
+                  "match": "\\S",
+                  "name": "invalid.illegal.character-not-allowed-here.tm-snippet"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "begin": "(/)",
+          "beginCaptures": {
+            "0": {
+              "name": "string.regexp.tm-snippet"
+            },
+            "1": {
+              "name": "punctuation.definition.string.begin.tm-snippet"
+            }
+          },
+          "end": "(/)",
+          "endCaptures": {
+            "0": {
+              "name": "string.regexp.tm-snippet"
+            },
+            "1": {
+              "name": "punctuation.definition.string.end.tm-snippet"
+            }
+          },
+          "name": "string.regexp.tm-snippet",
+          "patterns": [
+            {
+              "include": "source.regexp.oniguruma"
+            }
+          ]
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.begin.tm-snippet"
+            }
+          },
+          "comment": "Take care of the built-in dynamic environment variables.",
+          "match": "(\\$)TM_(BUNDLE_SUPPORT|S(COPE|OFT_TABS|UPPORT_PATH|ELECTED_(TEXT|FILE(S)?))|CURRENT_(WORD|LINE)|TAB_SIZE|DIRECTORY|PROJECT_DIRECTORY|FILEPATH|LINE_(NUMBER|INDEX))",
+          "name": "variable.other.predefined.tm-snippet"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.begin.tm-snippet"
+            }
+          },
+          "comment": "User defined variables.",
+          "match": "(\\$)[A-Za-z_][A-Za-z0-9_]*",
+          "name": "variable.other.readwrite.tm-snippet"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.begin.tm-snippet"
+            },
+            "2": {
+              "name": "punctuation.definition.variable.end.tm-snippet"
+            }
+          },
+          "comment": "User defined variables.",
+          "match": "(\\$\\{)[A-Za-z_][A-Za-z0-9_]*(\\})",
+          "name": "variable.other.readwrite.tm-snippet"
+        },
+        {
+          "begin": "(\\$\\{)[A-Za-z_][A-Za-z0-9_]*(:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.variable.begin.tm-snippet"
+            },
+            "2": {
+              "name": "punctuation.separator.options.tm-snippet"
+            }
+          },
+          "comment": "User defined variables.",
+          "end": "\\}",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.variable.end.tm-snippet"
+            }
+          },
+          "name": "variable.other.readwrite.tm-snippet"
+        },
+        {
+          "begin": "(\\$\\{)[A-Za-z_][A-Za-z0-9_]*(?=/)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.variable.begin.tm-snippet"
+            }
+          },
+          "end": "}",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.variable.end.tm-snippet"
+            }
+          },
+          "name": "variable.other.readwrite.tm-snippet",
+          "patterns": [
+            {
+              "begin": "(?<=/)",
+              "end": "(?=\\})",
+              "patterns": [
+                {
+                  "begin": "(?!/)",
+                  "end": "(?=/)",
+                  "name": "string.other.CHANGETHIS.tm-snippet",
+                  "patterns": [
+                    {
+                      "match": "(\\$)\\d+",
+                      "name": "variable.other.predefined.register.tm-snippet"
+                    },
+                    {
+                      "match": "\\\\[ulULE]",
+                      "name": "constant.other.reference.tm-snippet"
+                    },
+                    {
+                      "comment": "ASK ABOUT \\( HERE AND IN VARIABLES",
+                      "match": "\\\\[nt$\\\\]",
+                      "name": "constant.character.escape.tm-snippet"
+                    },
+                    {
+                      "begin": "\\(\\?\\d+:",
+                      "end": "\\)",
+                      "name": "meta.conditional-insertion.tm-snippet"
+                    }
+                  ]
+                },
+                {
+                  "begin": "(/)",
+                  "beginCaptures": {
+                    "0": {
+                      "name": "string.regexp.tm-snippet"
+                    },
+                    "1": {
+                      "name": "punctuation.definition.string.end.tm-snippet"
+                    }
+                  },
+                  "end": "(?=\\})",
+                  "patterns": [
+                    {
+                      "comment": "ASK ALLAN ABOUT THIS, IS INCOMPLETE.",
+                      "match": "(?<=/)([imx]+)?(-[imx]+)?"
+                    },
+                    {
+                      "match": "\\S",
+                      "name": "invalid.illegal.character-not-allowed-here.tm-snippet"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "begin": "(/)",
+              "beginCaptures": {
+                "0": {
+                  "name": "string.regexp.tm-snippet"
+                },
+                "1": {
+                  "name": "punctuation.definition.string.begin.tm-snippet"
+                }
+              },
+              "end": "(/)",
+              "endCaptures": {
+                "0": {
+                  "name": "string.regexp.tm-snippet"
+                },
+                "1": {
+                  "name": "punctuation.definition.string.end.tm-snippet"
+                }
+              },
+              "name": "string.regexp.tm-snippet",
+              "patterns": [
+                {
+                  "include": "source.regexp.oniguruma"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scopeName": "text.tm-snippet",
+  "uuid": "95BE73A9-82E2-493A-B467-013B4B2ECAD2"
+}

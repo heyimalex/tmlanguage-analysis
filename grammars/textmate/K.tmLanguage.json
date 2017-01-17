@@ -1,0 +1,82 @@
+{
+  "fileTypes": [
+    "k"
+  ],
+  "keyEquivalent": "^~K",
+  "name": "K",
+  "patterns": [
+    {
+      "match": "\\b(\\_d|\\_v|\\_t|\\_h|\\_p|\\_i|\\_w|\\_u|\\_n|\\_f)\\b",
+      "name": "variable.language.system.k"
+    },
+    {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.k"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.k"
+        }
+      },
+      "name": "string.quoted.double.k",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escape.k"
+        }
+      ]
+    },
+    {
+      "match": "\\b(\\_bin|\\_di|\\_dv|\\_draw|\\_gtime|\\_ic|\\_jd|\\_lsq|\\_dot|\\_mul|\\_inv|\\_in|\\_sv|\\_sm|\\_sm|\\_ss|\\_ssr|\\_vs)\\b",
+      "name": "support.function.system.k"
+    },
+    {
+      "match": "\\b(\\_abs|\\_floor|\\_sin|\\_sin|\\_cos|\\_tan|\\_sinh|\\_cosh|\\_tanh|\\_exp|\\_log|\\_sqr|\\_sqrt)\\b",
+      "name": "support.function.system.k"
+    },
+    {
+      "captures": {
+        "2": {
+          "name": "punctuation.definition.symbol.k"
+        }
+      },
+      "match": "((\\`)[a-zA-Z_]\\w+)\\b",
+      "name": "entity.name.tag.k"
+    },
+    {
+      "match": "\\~|\\!|\\@|\\#|\\$|\\%|\\^|\\&|\\*|\\_|\\+|\\-|\\=|\\||\\|.\\/|\\?|\\.|\\<|\\>|'|,|:|`",
+      "name": "keyword.operator.k"
+    },
+    {
+      "match": "(\\d:)",
+      "name": "support.function.io.k"
+    },
+    {
+      "begin": "(^[ \\t]*)(?=/)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.comment.leading.k"
+        }
+      },
+      "end": "(?!\\G)",
+      "patterns": [
+        {
+          "begin": "/",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.k"
+            }
+          },
+          "end": "\\n",
+          "name": "comment.line.slash.k"
+        }
+      ]
+    }
+  ],
+  "scopeName": "source.k",
+  "uuid": "9F8DA629-A8F8-4D6B-81F7-12804FFE7476"
+}

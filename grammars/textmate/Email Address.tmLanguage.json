@@ -1,0 +1,13 @@
+{
+  "fileTypes": [],
+  "injectionSelector": "text, comment",
+  "name": "Email Address",
+  "patterns": [
+    {
+      "match": "(?i)\\b([A-Z][A-Z0-9._%+-]+)@([A-Z0-9.\\-]+)\\.([A-Z]{2,4})\\b",
+      "name": "markup.underline.link.email.hyperlink"
+    }
+  ],
+  "scopeName": "text.mail",
+  "uuid": "99F6D23C-2048-4F09-8558-6CECA7E2262A"
+}

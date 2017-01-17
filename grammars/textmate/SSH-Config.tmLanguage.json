@@ -1,0 +1,88 @@
+{
+  "fileTypes": [
+    "ssh_config",
+    ".ssh/config",
+    "sshd_config"
+  ],
+  "name": "SSH Config",
+  "patterns": [
+    {
+      "match": "\\b(Add(ressFamily|KeysToAgent)|B(atchMode|indAddress)|C(anonical(Domains|ize(FallbackLocal|Hostname|MaxDots|PermittedCNAMEs))|hallengeResponseAuthentication|heckHostIP|iphers?|learAllForwardings|ompression(Level)?|onnect(Timeout|ionAttempts)|ontrolMaster|ontrolPath|ontrolPersist)|DynamicForward|E(nableSSHKeysign|scapeChar|xitOnForwardFailure)|FingerprintHash|Forward(Agent|X11(Timeout|Trusted)?)|G(SSAPI(Authentication|DelegateCredentials|CleanupCredentials|KeyExchange|ClientIdentity|ServerIdentity|RenewalForcesRekey|TrustDns)|atewayPorts|lobalKnownHostsFile)|H(ashKnownHosts|ost(KeyAlgorithms|KeyAlias|Name|based(Authentication|KeyTypes)))|I(PQoS|dentit(iesOnly|yFile))|K(bdInteractive(Authentication|Devices)|exAlgorithms)|L(ocal(Command|Forward)|ogLevel)|M(ACs|atch)|N(oHostAuthenticationForLocalhost|umberOfPasswordPrompts)|P(asswordAuthentication|ermitLocalCommand|KCS11Provider|ort|referredAuthentications|rotocol|roxy(Command|UseFdpass)|ubkey(AcceptedKeyTypes|Authentication))|R(SAAuthentication|ekeyLimit|emoteForward|equestTTY|hostsRSAAuthentication)|S(endEnv|erverAliveCountMax|erverAliveInterval|treamLocalBind(Mask|Unlink)|trictHostKeyChecking)|T(CPKeepAlive|unnel(Device)?)|U(pdateHostKeys|seBlacklistedKeys|sePrivilegedPort|ser(KnownHostsFile)?)|V(erifyHostKeyDNS|isualHostKey)|XAuthLocation)|AcceptEnv|Use(KeyChain|PAM)|X11Forwarding|Subsystem|SyslogFacility|LogLevel|(Kerberos(Authentication|OrLocalPasswd|TicketCleanup|GetAFSToken))\\b",
+      "name": "keyword.other.ssh-config"
+    },
+    {
+      "begin": "(^[ \\t]+)?(?=#)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.comment.leading.ssh-config"
+        }
+      },
+      "end": "(?!\\G)",
+      "patterns": [
+        {
+          "begin": "#",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.ssh-config"
+            }
+          },
+          "end": "\\n",
+          "name": "comment.line.number-sign.ssh-config"
+        }
+      ]
+    },
+    {
+      "begin": "(^[ \\t]+)?(?=//)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.comment.leading.ssh-config"
+        }
+      },
+      "end": "(?!\\G)",
+      "patterns": [
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.ssh-config"
+            }
+          },
+          "end": "\\n",
+          "name": "comment.line.double-slash.ssh-config"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "storage.type.ssh-config"
+        },
+        "2": {
+          "name": "entity.name.section.ssh-config"
+        },
+        "3": {
+          "name": "meta.toc-list.ssh-config"
+        }
+      },
+      "match": "(?:^| |\\t)(Host)\\s+((.*))$"
+    },
+    {
+      "match": "\\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b",
+      "name": "constant.numeric.ssh-config"
+    },
+    {
+      "match": "\\b[0-9]+\\b",
+      "name": "constant.numeric.ssh-config"
+    },
+    {
+      "match": "\\b(yes|no)\\b",
+      "name": "constant.language.ssh-config"
+    },
+    {
+      "match": "\\b[A-Z_]+\\b",
+      "name": "constant.language.ssh-config"
+    }
+  ],
+  "scopeName": "source.ssh-config",
+  "uuid": "B273855C-59D3-4DF3-9B7C-E68E0057D315"
+}
